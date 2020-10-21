@@ -23,23 +23,8 @@ export default {
 
     {
       name: "bodymovin",
-      type: "object",
+      type: "bodymovin",
       title: "Bodymovin Object",
-      fields: [
-        {
-          name: "bodymovinJson",
-          type: "code",
-          title: "JSON",
-          options: {
-            language: "json",
-          },
-        },
-        {
-          name: "scrollPrompt",
-          type: "string",
-          title: "Show me more label",
-        },
-      ],
     },
 
     {
@@ -49,39 +34,13 @@ export default {
     },
 
     {
-      name: "talkingHeadsVideo",
-      type: "array",
-      of: [
-        {
-          name: "talkingHead",
-          type: "vimeoCaption",
-        },
-      ],
-      validation: (Rule) => Rule.length(4),
+      name: "talkingHeads",
+      type: "talkingHeads",
     },
 
     {
       name: "quizCta",
-      type: "object",
-      title: "Quiz CTA",
-      fields: [
-        {
-          name: "title",
-          type: "string",
-          title: "Title",
-        },
-        {
-          name: "paragraph",
-          type: "text",
-          title: "Paragraph",
-          rows: 2,
-        },
-        {
-          name: "buttonLabel",
-          type: "string",
-          title: "Button Label",
-        },
-      ],
+      type: "quizCta",
     },
 
     {
@@ -92,133 +51,26 @@ export default {
 
     {
       name: "timeline",
-      type: "array",
+      type: "timeline",
       title: "Timeline",
-      of: [
-        {
-          name: "doubleCard",
-          type: "object",
-          title: "Double Card",
-          fields: [
-            {
-              name: "title",
-              type: "string",
-              title: "Timeline Year",
-            },
-            {
-              name: "paragraphTitle",
-              type: "string",
-              title: "Title",
-            },
-            {
-              name: "paragraph",
-              type: "text",
-              title: "Paragraph",
-            },
-          ],
-        },
-        {
-          name: "imageCard",
-          type: "object",
-          title: "Image Card",
-          fields: [
-            {
-              name: "title",
-              type: "string",
-              title: "Timeline Year",
-            },
-            {
-              name: "imageTitle",
-              type: "string",
-              title: "Title",
-            },
-            {
-              name: "bgImage",
-              type: "image",
-              title: "Image",
-            },
-            {
-              name: "alt",
-              type: "string",
-              title: "Image Alt",
-            },
-          ],
-        },
-        {
-          name: "singleCard",
-          type: "object",
-          title: "Single Card",
-          fields: [
-            {
-              name: "title",
-              type: "string",
-              title: "Timeline Year",
-            },
-            {
-              name: "paragraphTitle",
-              type: "string",
-              title: "Title",
-            },
-            {
-              name: "paragraph",
-              type: "text",
-              title: "Paragraph",
-            },
-          ],
-        },
-      ],
     },
 
     {
       name: "guidelinesCta",
-      type: "object",
+      type: "guidelinesCta",
       title: "Guidelines CTA",
-      fields: [
-        {
-          name: "ctaImage",
-          type: "image",
-          title: "Image",
-        },
-        {
-          name: "ctaCopy",
-          type: "titleCopy",
-          title: "CTA Copy",
-        },
-        {
-          name: "ctaLabel",
-          type: "string",
-          title: "CTA Label",
-        },
-        {
-          name: "ctaLink",
-          type: "url",
-          title: "CTA Link",
-        },
-      ],
     },
 
     {
       name: "uniformInfo",
-      type: "object",
+      type: "uniformInfo",
       title: "Uniforms",
-      fields: [
-        {
-          name: "uniformCopy",
-          type: "titleCopy",
-          title: "Uniform Copy",
-        },
-        {
-          name: "uniformVideo",
-          type: "vimeo",
-          title: "Uniform Video",
-        }
-      ],
     },
 
     {
       name: "questionsCopy",
       type: "titleCopy",
       title: "Any Questions Copy",
-    }
+    },
   ],
 };
