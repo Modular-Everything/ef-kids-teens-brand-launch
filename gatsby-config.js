@@ -4,5 +4,6 @@ module.exports = {
     description: `Showcasing the launch of the updated EF Kids & Teens brand.`,
     author: `@chrish-d`,
   },
-  plugins: [],
-}
+
+  plugins: [`gatsby-plugin-styled-components`],
+};
