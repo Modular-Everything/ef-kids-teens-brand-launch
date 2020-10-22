@@ -1,0 +1,72 @@
+@font-face {
+  /* Light */
+  font-weight: 300;
+  font-family: 'EF Circular Web';
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-Light.woff') format('woff2'), url('../fonts/EFCircularWeb-Light.woff2') format('woff');
+}
+
+@font-face {
+  /* Book */
+  font-weight: 400;
+  font-family: 'EF Circular Web';
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-Book.woff') format('woff2'), url('../fonts/EFCircularWeb-Book.woff2') format('woff');
+}
+
+@font-face {
+  /* Medium */
+  font-weight: 500;
+  font-family: 'EF Circular Web';
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-Medium.woff') format('woff2'), url('../fonts/EFCircularWeb-Medium.woff2') format('woff');
+}
+
+@font-face {
+  /* Bold */
+  font-weight: 700;
+  font-family: 'EF Circular Web';
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-Bold.woff') format('woff2'), url('../fonts/EFCircularWeb-Bold.woff2') format('woff');
+}
+
+@font-face {
+  /* LightItalic */
+  font-weight: 300;
+  font-family: 'EF Circular Web';
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-LightItalic.woff') format('woff2'), url('../fonts/EFCircularWeb-LightItalic.woff2') format('woff');
+}
+
+@font-face {
+  /* BookItalic */
+  font-weight: 400;
+  font-family: 'EF Circular Web';
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-BookItalic.woff') format('woff2'), url('../fonts/EFCircularWeb-BookItalic.woff2') format('woff');
+}
+
+@font-face {
+  /* MediumItalic */
+  font-weight: 500;
+  font-family: 'EF Circular Web';
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-MediumItalic.woff') format('woff2'), url('../fonts/EFCircularWeb-MediumItalic.woff2') format('woff');
+}
+
+@font-face {
+  /* BoldItalic */
+  font-weight: 700;
+  font-family: 'EF Circular Web';
+  font-style: italic;
+  font-display: swap;
+  src: url('../fonts/EFCircularWeb-BoldItalic.woff') format('woff2'), url('../fonts/EFCircularWeb-BoldItalic.woff2') format('woff');
+}
+
