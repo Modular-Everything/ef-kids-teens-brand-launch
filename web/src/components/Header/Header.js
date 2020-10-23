@@ -9,15 +9,17 @@ import ArrowLeft from '../../assets/icons/arrow-left.svg';
 
 //
 
-const Header = ({ title }) => (
+const Header = ({ title, back }) => (
   <HeaderWrap>
     <HeaderContainer>
-      <Return to="/">
-        <span>
-          <img src={ArrowLeft} alt="" />
-        </span>
-        Back to main site
-      </Return>
+      {back && (
+        <Return to="/">
+          <span>
+            <img src={ArrowLeft} alt="" />
+          </span>
+          Back to main site
+        </Return>
+      )}
 
       <LogoWrap to="/">
         <img src={Logo} alt={title} />
@@ -71,4 +73,9 @@ const Return = styled(Link)`
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  back: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  back: false,
 };
