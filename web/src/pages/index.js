@@ -6,16 +6,13 @@ import Timeline from '../components/Timeline';
 
 //
 
-const IndexPage = ({ location }) => {
-  console.log(typeof location);
-  return (
-    <Layout location={location}>
-      <h1>Hi</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <Timeline />
-    </Layout>
-  );
-};
+const IndexPage = ({ location }) => (
+  <Layout location={location}>
+    <h1>Hi</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <Timeline />
+  </Layout>
+);
 
 export default IndexPage;
 

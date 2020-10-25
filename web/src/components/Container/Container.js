@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const breakpoints = [640, 768, 1024, 1280];
 
 const PageContainer = styled.div`
+  position: relative;
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
