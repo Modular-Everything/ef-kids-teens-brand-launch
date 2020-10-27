@@ -12,9 +12,6 @@ const LottieAnim = () => {
     autoplay: true,
     animationData: animationData.default,
     renderer: 'canvas',
-    rendererSettings: {
-      preserveAspectRatio: 'xMinYMin slice',
-    },
   };
 
   return <Lottie options={defaultOptions} />;
