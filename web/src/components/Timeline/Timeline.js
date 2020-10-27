@@ -130,11 +130,16 @@ const CardContainer = styled(Swiper)`
     position: relative;
     align-self: stretch;
     height: auto;
-    opacity: 0.2;
     transition: opacity 500ms ease-in-out;
 
+    & > div:nth-of-type(1) {
+      opacity: 0.2;
+    }
+
     &.swiper-slide-visible {
-      opacity: 1;
+      & > div:nth-of-type(1) {
+        opacity: 1;
+      }
     }
   }
 
