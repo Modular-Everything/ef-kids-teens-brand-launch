@@ -123,6 +123,7 @@ export default Timeline;
 //
 
 const CardContainer = styled(Swiper)`
+  margin-bottom: 7.75rem;
   overflow: visible;
 
   & .swiper-slide {

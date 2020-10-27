@@ -59,6 +59,7 @@ const MarkerWrap = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 7.75rem;
   padding-top: 3.5rem;
 
   & p {
