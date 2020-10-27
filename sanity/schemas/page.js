@@ -22,12 +22,6 @@ export default {
     },
 
     {
-      name: "bodymovin",
-      type: "bodymovin",
-      title: "Bodymovin Object",
-    },
-
-    {
       name: "talkingHeadsCopy",
       type: "titleCopy",
       title: "Talking Heads Copy",

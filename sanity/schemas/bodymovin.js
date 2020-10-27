@@ -11,10 +11,5 @@ export default {
         language: "json",
       },
     },
-    {
-      name: "scrollPrompt",
-      type: "string",
-      title: "Show me more label",
-    },
   ],
 };
