@@ -44,11 +44,16 @@ const Timeline = ({ data }) => {
       swiper.slidesSizesGrid[0] / 2 + DOT_REF.current.offsetWidth
     );
 
-    // 5. get the width of the line by `calc(virtualSize / 2 + leftOffset + 16px)`
+    // 5. get the width of the line with some crazy numbers
+    const totalSlides = swiper.slidesSizesGrid.length;
+    console.log(swiper);
     setLineWidth(
       swiper.virtualSize / 2 +
         swiper.slidesSizesGrid[0] / 2 +
-        DOT_REF.current.offsetWidth * 2
+        swiper.slidesSizesGrid[totalSlides - 1] / 2 -
+        swiper.params.spaceBetween * totalSlides +
+        DOT_REF.current.offsetWidth * 3 -
+        4
     );
 
     // 6. translate the line with the swiper
