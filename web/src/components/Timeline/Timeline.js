@@ -65,6 +65,8 @@ const Timeline = ({ data }) => {
         spaceBetween={24}
         onSwiper={(swiper) => handleTranslate(swiper)}
         onSetTranslate={(swiper) => handleTranslate(swiper)}
+        watchSlidesVisibility
+        // centeredSlides
       >
         {data.map((node, index) => {
           const cardType = node._type;
@@ -122,14 +124,25 @@ const CardContainer = styled(Swiper)`
     position: relative;
     align-self: stretch;
     height: auto;
+    opacity: 0.2;
+    transition: opacity 500ms ease-in-out;
+
+    &.swiper-slide-visible {
+      opacity: 1;
+    }
   }
 
   & .card__singleCard {
-    width: 15rem;
+    width: 90%;
+
+    @media (min-width: 30rem) {
+      width: 15rem;
+    }
   }
 
   & .card__doubleCard {
-    width: 30rem;
+    width: 90%;
+    max-width: 30rem;
   }
 `;
 
