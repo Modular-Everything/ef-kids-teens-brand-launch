@@ -13,8 +13,6 @@ const ProgressLine = ({ offset, vertical, horizontal, width, cardSizes }) => {
     return `var(--ef-kids-${variants[variantId]}) ${position}%`;
   });
 
-  console.log('gradient', gradient);
-
   return (
     <Line
       style={{

@@ -5,8 +5,6 @@ import * as animationData from './ef.json';
 //
 
 const LottieAnim = () => {
-  console.log(animationData);
-
   const defaultOptions = {
     loop: true,
     autoplay: true,
