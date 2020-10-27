@@ -23,6 +23,7 @@ const Timeline = ({ data }) => {
   const [verticalPosition, setVerticalPosition] = useState(0);
   const [horizontalPosition, setHorizontalPosition] = useState(0);
   const [lineWidth, setLineWidth] = useState(0);
+  const [sizesGrid, setSizesGrid] = useState([]);
 
   // * Set references
 
@@ -32,19 +33,19 @@ const Timeline = ({ data }) => {
   // * Handle swiper movements
 
   function handleTranslate(swiper) {
-    // 1. get the height of MarkerWrap
-    // 2. divide by 2 and + 10 (this gets the bottom position of the line)
+    // 1. get the height of MarkerWrap and divide by 2 and + 10
+    //    (this gets the bottom position of the line)
     setVerticalPosition(
       MARKER_REF.current.offsetHeight / 2 + DOT_REF.current.offsetHeight / 2 - 4
     );
 
-    // 3. get the width of the first card (swiper method: slidesSizesGrid[0])
-    // 4. divide by 2 and + 16 (this gets the left offset of the line) (leftOffset)
+    // 2. get the width of the first card (swiper method: slidesSizesGrid[0])
+    //    divide by 2 and + 16(this gets the left offset of the line)(leftOffset)
     setHorizontalPosition(
       swiper.slidesSizesGrid[0] / 2 + DOT_REF.current.offsetWidth
     );
 
-    // 5. get the width of the line with some crazy numbers
+    // 3. get the width of the line with some crazy numbers
     const totalSlides = swiper.slidesSizesGrid.length;
     setLineWidth(
       swiper.virtualSize -
@@ -52,8 +53,11 @@ const Timeline = ({ data }) => {
         swiper.slidesSizesGrid[totalSlides - 1] / 2
     );
 
-    // 6. translate the line with the swiper
+    // 4. translate the line with the swiper
     setLineOffset(Math.floor(swiper.translate));
+
+    // 5. create state of sizes
+    setSizesGrid(swiper.slidesGrid);
   }
 
   // * Render it
@@ -108,6 +112,7 @@ const Timeline = ({ data }) => {
         vertical={verticalPosition}
         horizontal={horizontalPosition}
         width={lineWidth}
+        cardSizes={sizesGrid}
       />
     </Container>
   );
@@ -148,4 +153,6 @@ const CardContainer = styled(Swiper)`
 
 //
 
-Timeline.propTypes = {};
+Timeline.propTypes = {
+  data: PropTypes.object.isRequired,
+};

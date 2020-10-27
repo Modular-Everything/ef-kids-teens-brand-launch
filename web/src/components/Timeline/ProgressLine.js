@@ -4,17 +4,29 @@ import styled from 'styled-components';
 
 //
 
-const ProgressLine = ({ offset, vertical, horizontal, width }) => (
-  <Line
-    style={{
-      bottom: `-${vertical}px`,
-      left: `${horizontal}px`,
-      width: `${width}px`,
-      transform: `translate3d(${offset}px, 0, 0)`,
-      background: `linear-gradient(90deg, var(--ef-kids-pink) 0%, var(--ef-kids-orange) 50%, var(--ef-kids-green) 100%)`,
-    }}
-  />
-);
+const ProgressLine = ({ offset, vertical, horizontal, width, cardSizes }) => {
+  const gradient = cardSizes.map((pos, index) => {
+    const variants = ['pink', 'orange', 'green', 'blue'];
+    const variantId = index % variants.length;
+    const position = pos > 0 ? Math.floor((pos / width) * 100) : 0;
+
+    return `var(--ef-kids-${variants[variantId]}) ${position}%`;
+  });
+
+  console.log('gradient', gradient);
+
+  return (
+    <Line
+      style={{
+        bottom: `-${vertical}px`,
+        left: `${horizontal}px`,
+        width: `${width}px`,
+        transform: `translate3d(${offset}px, 0, 0)`,
+        background: `linear-gradient(90deg, ${gradient.join()})`,
+      }}
+    />
+  );
+};
 
 export default ProgressLine;
 
@@ -34,4 +46,5 @@ ProgressLine.propTypes = {
   vertical: PropTypes.number.isRequired,
   horizontal: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
+  cardSizes: PropTypes.array.isRequired,
 };
