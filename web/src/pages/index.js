@@ -1,20 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import Timeline from '../components/Timeline';
 
 //
 
-const IndexPage = ({ location }) => (
+const IndexPage = ({ location, data }) => (
   <Layout location={location}>
     <h1>Hi</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <Timeline />
+    <Timeline data={data.sanityPage.timeline} />
   </Layout>
 );
 
 export default IndexPage;
+
+//
+
+export const data = graphql`
+  query TimelineQuery {
+    sanityPage(_id: { eq: "homepage" }) {
+      timeline {
+        ... on SanityDoubleCard {
+          _key
+          _type
+          year
+          paragraph
+          paragraphTitle
+        }
+        ... on SanityImageCard {
+          _key
+          _type
+          year
+          imageTitle
+          bgImage {
+            asset {
+              fluid(maxWidth: 480) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+        ... on SanitySingleCard {
+          _key
+          _type
+          year
+          paragraph
+          paragraphTitle
+        }
+      }
+    }
+  }
+`;
 
 //
 

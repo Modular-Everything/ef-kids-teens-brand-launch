@@ -4,10 +4,10 @@ export default {
   title: "Image Card",
   fields: [
     {
-      name: "title",
+      name: "year",
       type: "string",
-      title: "Timeline Year",
-    },
+      title: "Year",
+  },
     {
       name: "imageTitle",
       type: "string",

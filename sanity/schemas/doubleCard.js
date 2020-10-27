@@ -4,9 +4,9 @@ export default {
   title: "Double Card",
   fields: [
     {
-      name: "title",
+      name: "year",
       type: "string",
-      title: "Timeline Year",
+      title: "Year",
     },
     {
       name: "paragraphTitle",
