@@ -10,7 +10,7 @@ import Lottie from '../components/Lottie';
 
 const IndexPage = ({ location, data }) => (
   <Layout location={location}>
-    <h1>Hi</h1>
+    <Timeline data={data.sanityPage.timeline} />
     <Lottie />
   </Layout>
 );
@@ -19,7 +19,7 @@ export default IndexPage;
 
 //
 
-export const data = graphql`
+export const query = graphql`
   query LandingQuery {
     sanityPage(_id: { eq: "homepage" }) {
       # Timeline
