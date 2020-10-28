@@ -10,6 +10,7 @@ import LandscapeCard from '../components/LandscapeCard';
 import SectionIntro from '../components/SectionIntro';
 import RevealMore from '../components/RevealMore';
 import Video from '../components/Video';
+import CardGrid from '../components/CardGrid';
 
 //
 
@@ -34,9 +35,44 @@ const IndexPage = ({ location, data }) => {
         />
       </Container>
 
+      {/* <Lottie /> */}
+
       <RevealMore label="Show me more" />
 
-      {/* <Lottie /> */}
+      <Container>
+        <SectionIntro
+          title={sanity.talkingHeadsCopy.title}
+          copy={sanity.talkingHeadsCopy.paragraph}
+          small
+        />
+
+        <CardGrid hasCaption>
+          <Video
+            videoData="https://vimeo.com/432893400"
+            type="card"
+            captionTitle="Joel Hladecek"
+            captionCopy="Chief Creative Officer, EF"
+          />
+          <Video
+            videoData="https://vimeo.com/432893400"
+            type="card"
+            captionTitle="Jonathan Hall"
+            captionCopy="President, Kids &amp; Teens, International"
+          />
+          <Video
+            videoData="https://vimeo.com/432893400"
+            type="card"
+            captionTitle="Jacob Toren"
+            captionCopy="CEO, EF Education First, China"
+          />
+          <Video
+            videoData="https://vimeo.com/432893400"
+            type="card"
+            captionTitle="Musa Sunandar"
+            captionCopy="Designer, Kids &amp; Teens, Indonesia"
+          />
+        </CardGrid>
+      </Container>
 
       <Container>
         <SectionIntro
@@ -56,14 +92,6 @@ const IndexPage = ({ location, data }) => {
         <SectionIntro
           title={sanity.questionsCopy.title}
           copy={sanity.questionsCopy.paragraph}
-        />
-      </Container>
-
-      <Container>
-        <SectionIntro
-          title={sanity.talkingHeadsCopy.title}
-          copy={sanity.talkingHeadsCopy.paragraph}
-          small
         />
       </Container>
 

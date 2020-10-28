@@ -56,7 +56,7 @@ const Return = styled(Link)`
   color: var(--ef-black);
   text-decoration: none;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     display: block;
   }
 
