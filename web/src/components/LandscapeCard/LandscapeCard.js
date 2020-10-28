@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 //
 
 const LandscapeCard = ({ image, title, copy, ctaLabel, ctaLink }) => (
   <CardWrapper>
-    <Link to={ctaLink} className="img__link">
+    <a href={ctaLink} className="img__link">
       <Img fluid={image.fluid} alt="title" />
-    </Link>
+    </a>
 
     <CardContent>
       <h3>{title}</h3>
       <p>{copy}</p>
 
-      <CTA to={ctaLink}>
+      <CTA href={ctaLink}>
         {ctaLabel} <span className="cta__arrow">&rarr;</span>
       </CTA>
     </CardContent>
@@ -77,7 +76,7 @@ const CardContent = styled.div`
   }
 `;
 
-const CTA = styled(Link)`
+const CTA = styled.a`
   display: flex;
   justify-content: space-between;
   width: 100%;

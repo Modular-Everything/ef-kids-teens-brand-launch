@@ -74,12 +74,12 @@ const Timeline = ({ data }) => {
       >
         {data.map((node, index) => {
           const cardType = node._type;
+          console.log(node._key);
 
           if (cardType === 'imageCard') {
             return (
-              <SwiperSlide className="card__singleCard">
+              <SwiperSlide className="card__singleCard" key={node._key}>
                 <ImageCard
-                  key={node._key}
                   id={index}
                   title={node.imageTitle}
                   img={node.bgImage.asset}
@@ -92,9 +92,8 @@ const Timeline = ({ data }) => {
           }
 
           return (
-            <SwiperSlide className={`card__${cardType}`}>
+            <SwiperSlide className={`card__${cardType}`} key={node._key}>
               <Card
-                key={node._key}
                 id={index}
                 title={node.paragraphTitle}
                 copy={node.paragraph}
@@ -160,5 +159,5 @@ const CardContainer = styled(Swiper)`
 //
 
 Timeline.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
 };

@@ -89,5 +89,5 @@ Card.propTypes = {
   copy: PropTypes.string.isRequired,
   marker: PropTypes.object.isRequired,
   dot: PropTypes.object.isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
 };

@@ -94,6 +94,6 @@ ImageCard.propTypes = {
   title: PropTypes.string.isRequired,
   marker: PropTypes.object.isRequired,
   dot: PropTypes.object.isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   img: PropTypes.object.isRequired,
 };
