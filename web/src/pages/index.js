@@ -33,7 +33,39 @@ const IndexPage = ({ location, data }) => {
       {/* <Lottie /> */}
 
       <Container>
-        <SectionIntro />
+        <SectionIntro
+          title={sanity.uniformInfo.uniformCopy.title}
+          copy={sanity.uniformInfo.uniformCopy.paragraph}
+        />
+      </Container>
+
+      <Container>
+        <SectionIntro
+          title={sanity.openingCopy.title}
+          copy={sanity.openingCopy.paragraph}
+        />
+      </Container>
+
+      <Container>
+        <SectionIntro
+          title={sanity.questionsCopy.title}
+          copy={sanity.questionsCopy.paragraph}
+        />
+      </Container>
+
+      <Container>
+        <SectionIntro
+          title={sanity.talkingHeadsCopy.title}
+          copy={sanity.talkingHeadsCopy.paragraph}
+          small
+        />
+      </Container>
+
+      <Container>
+        <SectionIntro
+          title={sanity.timelineCopy.title}
+          copy={sanity.timelineCopy.paragraph}
+        />
       </Container>
     </Layout>
   );
@@ -92,6 +124,30 @@ export const query = graphql`
           year
           paragraph
           paragraphTitle
+        }
+      }
+
+      # SectionIntro Copy
+      openingCopy {
+        title
+        paragraph
+      }
+      questionsCopy {
+        title
+        paragraph
+      }
+      talkingHeadsCopy {
+        title
+        paragraph
+      }
+      timelineCopy {
+        title
+        paragraph
+      }
+      uniformInfo {
+        uniformCopy {
+          title
+          paragraph
         }
       }
     }

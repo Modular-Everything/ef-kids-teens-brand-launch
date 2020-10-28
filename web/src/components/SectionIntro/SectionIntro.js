@@ -4,19 +4,12 @@ import styled from 'styled-components';
 
 //
 
-const SectionIntro = () => (
+const SectionIntro = ({ title, copy, small }) => (
   <IntroWrap>
-    <Title>
-      <h2>An all-new uniform for school staff</h2>
-    </Title>
+    <Title>{small ? <h3>{title}</h3> : <h2>{title}</h2>}</Title>
 
     <Paragraph>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
+      <p>{copy}</p>
     </Paragraph>
   </IntroWrap>
 );
@@ -57,6 +50,14 @@ const Title = styled.div`
       line-height: 3.5rem;
     }
   }
+
+  & h3 {
+    margin: 0;
+    color: var(--ef-black);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
 `;
 
 const Paragraph = styled.div`
@@ -83,4 +84,12 @@ const Paragraph = styled.div`
 
 //
 
-SectionIntro.propTypes = {};
+SectionIntro.propTypes = {
+  title: PropTypes.string.isRequired,
+  copy: PropTypes.string.isRequired,
+  small: PropTypes.bool,
+};
+
+SectionIntro.defaultProps = {
+  small: false,
+};
