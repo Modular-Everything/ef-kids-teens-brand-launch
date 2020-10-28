@@ -122,12 +122,12 @@ const FullWidthVideo = styled.div`
   padding-bottom: 50%;
   overflow: hidden;
 
-  & > div {
+  & .react-player__preview {
     transition: all ease-in-out 150ms;
   }
 
   &:hover {
-    & > div {
+    & .react-player__preview {
       transform: scale(1.05);
     }
   }
