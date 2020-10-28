@@ -15,7 +15,12 @@ const LottieAnim = ({ spacing }) => {
     renderer: 'canvas',
   };
 
-  return <Lottie options={defaultOptions} style={handleSpace(spacing)} />;
+  return (
+    <Lottie
+      options={defaultOptions}
+      style={(handleSpace(spacing), { border: '1px solid #ddd' })}
+    />
+  );
 };
 
 export default LottieAnim;
