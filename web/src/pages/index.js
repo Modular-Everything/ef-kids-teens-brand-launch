@@ -9,6 +9,7 @@ import Lottie from '../components/Lottie';
 import LandscapeCard from '../components/LandscapeCard';
 import SectionIntro from '../components/SectionIntro';
 import RevealMore from '../components/RevealMore';
+import Video from '../components/Video';
 
 //
 
@@ -19,6 +20,8 @@ const IndexPage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
+      <Video videoData="https://vimeo.com/432893400" type="full" />
+
       <Timeline data={sanity.timeline} />
 
       <Container>
