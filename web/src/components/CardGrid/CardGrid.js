@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import handleSpace from '../../helpers/handleSpace';
+
 //
 
-const CardGrid = ({ children, hasCaption }) => (
-  <Grid hasCaption={hasCaption}>{children}</Grid>
+const CardGrid = ({ children, hasCaption, spacing }) => (
+  <Grid hasCaption={hasCaption} style={handleSpace(spacing)}>
+    {children}
+  </Grid>
 );
 
 export default CardGrid;
@@ -29,8 +33,10 @@ const Grid = styled.section`
 CardGrid.propTypes = {
   children: PropTypes.node.isRequired,
   hasCaption: PropTypes.bool,
+  spacing: PropTypes.array,
 };
 
 CardGrid.defaultProps = {
   hasCaption: false,
+  spacing: [64, 64],
 };

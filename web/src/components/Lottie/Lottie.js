@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Lottie from 'react-lottie';
+
 import * as animationData from './ef.json';
+import handleSpace from '../../helpers/handleSpace';
 
 //
 
-const LottieAnim = () => {
+const LottieAnim = ({ spacing }) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -12,7 +15,17 @@ const LottieAnim = () => {
     renderer: 'canvas',
   };
 
-  return <Lottie options={defaultOptions} />;
+  return <Lottie options={defaultOptions} style={handleSpace(spacing)} />;
 };
 
 export default LottieAnim;
+
+//
+
+LottieAnim.propTypes = {
+  spacing: PropTypes.array,
+};
+
+LottieAnim.defaultProps = {
+  spacing: [64, 64],
+};

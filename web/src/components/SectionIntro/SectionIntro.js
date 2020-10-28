@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import handleSpace from '../../helpers/handleSpace';
+
 //
 
-const SectionIntro = ({ title, copy, small }) => (
-  <IntroWrap>
+const SectionIntro = ({ title, copy, small, spacing }) => (
+  <IntroWrap style={handleSpace(spacing)}>
     <Title>{small ? <h3>{title}</h3> : <h2>{title}</h2>}</Title>
 
     <Paragraph>
@@ -88,8 +90,10 @@ SectionIntro.propTypes = {
   title: PropTypes.string.isRequired,
   copy: PropTypes.string.isRequired,
   small: PropTypes.bool,
+  spacing: PropTypes.array,
 };
 
 SectionIntro.defaultProps = {
   small: false,
+  spacing: [64, 64],
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import handleSpace from '../../helpers/handleSpace';
+
 //
 
 const breakpoints = [480, 640, 768, 960];
@@ -10,15 +12,18 @@ const PageContainer = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
 
   ${breakpoints.map(
     (bp) => `@media(min-width: ${bp / 16}rem) { max-width: ${bp / 16}rem; }`
   )}
 `;
 
-const Container = ({ children, className }) => (
-  <PageContainer className={className}>{children}</PageContainer>
+const Container = ({ children, className, spacing }) => (
+  <PageContainer className={className} style={handleSpace(spacing)}>
+    {children}
+  </PageContainer>
 );
 
 export default Container;
@@ -28,8 +33,10 @@ export default Container;
 Container.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  spacing: PropTypes.array,
 };
 
 Container.defaultProps = {
   className: null,
+  spacing: [0, 0],
 };

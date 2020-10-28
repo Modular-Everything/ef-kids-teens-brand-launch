@@ -25,7 +25,7 @@ const IndexPage = ({ location, data }) => {
 
       <Timeline data={sanity.timeline} />
 
-      <Container>
+      <Container spacing={[64, 64]}>
         <LandscapeCard
           image={sanity.guidelinesCta.ctaImage.asset}
           title={sanity.guidelinesCta.ctaCopy.title}
