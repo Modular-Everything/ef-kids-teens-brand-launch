@@ -128,7 +128,7 @@ const FullWidthVideo = styled.div`
 
   &:hover {
     & > div {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 
