@@ -7,6 +7,7 @@ import Container from '../components/Container';
 import Timeline from '../components/Timeline';
 import Lottie from '../components/Lottie';
 import LandscapeCard from '../components/LandscapeCard';
+import SectionIntro from '../components/SectionIntro';
 
 //
 
@@ -29,7 +30,11 @@ const IndexPage = ({ location, data }) => {
         />
       </Container>
 
-      <Lottie />
+      {/* <Lottie /> */}
+
+      <Container>
+        <SectionIntro />
+      </Container>
     </Layout>
   );
 };
