@@ -128,7 +128,10 @@ const CardContainer = styled(Swiper)`
     position: relative;
     align-self: stretch;
     height: auto;
-    transition: opacity 500ms ease-in-out;
+
+    & > div {
+      transition: opacity 500ms ease-in-out;
+    }
 
     & > div:nth-of-type(1) {
       opacity: 0.2;
