@@ -23,27 +23,23 @@ const IndexPage = ({ location, data }) => {
     <Layout location={location}>
       <Video videoData="https://vimeo.com/432893400" type="full" />
 
-      <Timeline data={sanity.timeline} />
-
-      <Container spacing={[64, 64]}>
-        <LandscapeCard
-          image={sanity.guidelinesCta.ctaImage.asset}
-          title={sanity.guidelinesCta.ctaCopy.title}
-          copy={sanity.guidelinesCta.ctaCopy.paragraph}
-          ctaLabel={sanity.guidelinesCta.ctaLabel}
-          ctaLink={sanity.guidelinesCta.ctaLink}
+      <Container spacing={[132, 52]}>
+        <SectionIntro
+          title={sanity.openingCopy.title}
+          copy={sanity.openingCopy.paragraph}
         />
       </Container>
 
-      {/* <Lottie /> */}
+      <Lottie />
 
-      <RevealMore label="Show me more" />
+      <RevealMore label="Show me more" spacing={[80, 132]} />
 
-      <Container>
+      <Container spacing={[0, 180]}>
         <SectionIntro
           title={sanity.talkingHeadsCopy.title}
           copy={sanity.talkingHeadsCopy.paragraph}
           small
+          spacing={[0, 64]}
         />
 
         <CardGrid hasCaption>
@@ -74,31 +70,42 @@ const IndexPage = ({ location, data }) => {
         </CardGrid>
       </Container>
 
-      <Container>
-        <SectionIntro
-          title={sanity.uniformInfo.uniformCopy.title}
-          copy={sanity.uniformInfo.uniformCopy.paragraph}
-        />
-      </Container>
+      {/* TEST YOUR KNOWLEDGE COMPONENT */}
 
       <Container>
         <SectionIntro
-          title={sanity.openingCopy.title}
-          copy={sanity.openingCopy.paragraph}
+          title={sanity.timelineCopy.title}
+          copy={sanity.timelineCopy.paragraph}
+          spacing={[0, 80]}
         />
+      </Container>
+
+      <Timeline data={sanity.timeline} />
+
+      <Container spacing={[110, 140]}>
+        <LandscapeCard
+          image={sanity.guidelinesCta.ctaImage.asset}
+          title={sanity.guidelinesCta.ctaCopy.title}
+          copy={sanity.guidelinesCta.ctaCopy.paragraph}
+          ctaLabel={sanity.guidelinesCta.ctaLabel}
+          ctaLink={sanity.guidelinesCta.ctaLink}
+        />
+      </Container>
+
+      <Container spacing={[0, 120]}>
+        <SectionIntro
+          title={sanity.uniformInfo.uniformCopy.title}
+          copy={sanity.uniformInfo.uniformCopy.paragraph}
+          spacing={[0, 80]}
+        />
+
+        <Video videoData="https://vimeo.com/432893400" type="card" />
       </Container>
 
       <Container>
         <SectionIntro
           title={sanity.questionsCopy.title}
           copy={sanity.questionsCopy.paragraph}
-        />
-      </Container>
-
-      <Container>
-        <SectionIntro
-          title={sanity.timelineCopy.title}
-          copy={sanity.timelineCopy.paragraph}
         />
       </Container>
     </Layout>
