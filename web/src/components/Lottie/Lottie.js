@@ -27,5 +27,5 @@ LottieAnim.propTypes = {
 };
 
 LottieAnim.defaultProps = {
-  spacing: [64, 64],
+  spacing: [0, 0],
 };

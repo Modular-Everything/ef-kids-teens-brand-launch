@@ -163,7 +163,7 @@ Video.defaultProps = {
   type: null,
   captionTitle: null,
   captionCopy: null,
-  spacing: [0, 64],
+  spacing: [0, 0],
 };
 
 Caption.propTypes = {

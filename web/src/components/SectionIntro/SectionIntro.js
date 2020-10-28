@@ -95,5 +95,5 @@ SectionIntro.propTypes = {
 
 SectionIntro.defaultProps = {
   small: false,
-  spacing: [64, 64],
+  spacing: [0, 0],
 };

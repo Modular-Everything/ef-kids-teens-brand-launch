@@ -38,5 +38,5 @@ CardGrid.propTypes = {
 
 CardGrid.defaultProps = {
   hasCaption: false,
-  spacing: [64, 64],
+  spacing: [0, 0],
 };
