@@ -87,7 +87,7 @@ const Play = styled.button`
   background-color: #fff;
   border: none;
   border-radius: 9rem;
-  box-shadow: 0px 2px 8px rgba(25, 25, 25, 0.15);
+  box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
   cursor: pointer;
 
   @media (min-width: 960px) {
@@ -137,7 +137,7 @@ const FullWidthVideo = styled.div`
     props.type === 'card' &&
     `
       border-radius: 4px;
-      box-shadow: 0px 2px 8px rgba(25, 25, 25, 0.15);
+      box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
   `}
 
   & div {

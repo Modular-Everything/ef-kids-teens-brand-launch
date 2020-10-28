@@ -11,6 +11,7 @@ import SectionIntro from '../components/SectionIntro';
 import RevealMore from '../components/RevealMore';
 import Video from '../components/Video';
 import CardGrid from '../components/CardGrid';
+import BrandedCTA from '../components/BrandedCTA';
 
 //
 
@@ -34,7 +35,7 @@ const IndexPage = ({ location, data }) => {
 
       <RevealMore label="Show me more" spacing={[80, 132]} />
 
-      <Container spacing={[0, 180]}>
+      <Container>
         <SectionIntro
           title={sanity.talkingHeadsCopy.title}
           copy={sanity.talkingHeadsCopy.paragraph}
@@ -70,7 +71,14 @@ const IndexPage = ({ location, data }) => {
         </CardGrid>
       </Container>
 
-      {/* TEST YOUR KNOWLEDGE COMPONENT */}
+      <Container spacing={[180, 180]}>
+        <BrandedCTA
+          title={sanity.quizCta.title}
+          copy={sanity.quizCta.paragraph}
+          ctaLabel={sanity.quizCta.buttonLabel}
+          ctaLink="/quiz"
+        />
+      </Container>
 
       <Container>
         <SectionIntro
@@ -166,6 +174,13 @@ export const query = graphql`
           paragraph
           paragraphTitle
         }
+      }
+
+      # Quiz CTA
+      quizCta {
+        title
+        paragraph
+        buttonLabel
       }
 
       # SectionIntro Copy

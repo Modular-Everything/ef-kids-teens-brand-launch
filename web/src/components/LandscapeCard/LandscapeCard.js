@@ -32,7 +32,7 @@ const CardWrapper = styled.div`
   overflow: hidden;
   background: #fff;
   border-radius: 4px;
-  box-shadow: 0px 2px 8px rgba(25, 25, 25, 0.15);
+  box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
 
   & .gatsby-image-wrapper {
     width: 100%;
