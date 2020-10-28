@@ -74,7 +74,6 @@ const Timeline = ({ data }) => {
       >
         {data.map((node, index) => {
           const cardType = node._type;
-          console.log(node._key);
 
           if (cardType === 'imageCard') {
             return (
