@@ -8,6 +8,7 @@ import Timeline from '../components/Timeline';
 import Lottie from '../components/Lottie';
 import LandscapeCard from '../components/LandscapeCard';
 import SectionIntro from '../components/SectionIntro';
+import RevealMore from '../components/RevealMore';
 
 //
 
@@ -29,6 +30,8 @@ const IndexPage = ({ location, data }) => {
           ctaLink={sanity.guidelinesCta.ctaLink}
         />
       </Container>
+
+      <RevealMore label="Show me more" />
 
       {/* <Lottie /> */}
 
