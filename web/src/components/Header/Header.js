@@ -33,6 +33,8 @@ export default Header;
 //
 
 const HeaderWrap = styled.header`
+  position: relative;
+  z-index: 10;
   background-color: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
 `;
