@@ -51,7 +51,7 @@ const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
 
   const hasCaption = captionTitle || captionCopy;
 
-  // * Return full width player
+  // * Return player
 
   return (
     <article style={handleSpace(spacing)}>
@@ -120,12 +120,8 @@ const CaptionWrap = styled.div`
 
 const FullWidthVideo = styled.div`
   position: relative;
-  padding-bottom: 100%;
+  padding-bottom: 50%;
   overflow: hidden;
-
-  @media (min-width: 480px) {
-    padding-bottom: 50%;
-  }
 
   & .react-player__preview {
     transition: all ease-in-out 150ms;
@@ -136,6 +132,16 @@ const FullWidthVideo = styled.div`
       transform: scale(1.05);
     }
   }
+
+  ${(props) =>
+    props.type === 'full' &&
+    `
+      padding-bottom: 100%;
+
+      @media (min-width: 480px) {
+        padding-bottom: 50%;
+      }
+  `}
 
   ${(props) =>
     props.type === 'card' &&
