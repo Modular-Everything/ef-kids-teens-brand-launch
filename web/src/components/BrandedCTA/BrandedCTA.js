@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
 
 import handleSpace from '../../helpers/handleSpace';
+import Button from '../Button';
 import Pink from '../../assets/brand/brand-block-pink.svg';
 import Blue from '../../assets/brand/brand-block-blue.svg';
 import Green from '../../assets/brand/brand-block-green.svg';
@@ -20,7 +21,7 @@ const BrandedCTA = ({ title, copy, ctaLabel, ctaLink, spacing }) => (
       </div>
 
       <div className="cta__link">
-        <Link to={ctaLink}>{ctaLabel}</Link>
+        <Button label={ctaLabel} link={ctaLink} />
       </div>
     </CardContent>
 
