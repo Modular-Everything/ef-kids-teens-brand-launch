@@ -120,8 +120,12 @@ const CaptionWrap = styled.div`
 
 const FullWidthVideo = styled.div`
   position: relative;
-  padding-bottom: 50%;
+  padding-bottom: 100%;
   overflow: hidden;
+
+  @media (min-width: 480px) {
+    padding-bottom: 50%;
+  }
 
   & .react-player__preview {
     transition: all ease-in-out 150ms;
