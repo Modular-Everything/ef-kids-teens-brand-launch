@@ -82,6 +82,7 @@ const BrandIcons = styled.div`
     animation: ${FloatAnim} 30s linear infinite;
 
     @media (min-width: 640px) {
+      top: unset;
       bottom: 4rem;
     }
   }
@@ -93,6 +94,7 @@ const BrandIcons = styled.div`
     animation: ${FloatAnimAlt} 15s linear infinite;
 
     @media (min-width: 640px) {
+      top: unset;
       bottom: -4rem;
       left: 5%;
     }
@@ -108,6 +110,7 @@ const BrandIcons = styled.div`
     @media (min-width: 640px) {
       top: -3rem;
       right: 25%;
+      bottom: unset;
     }
   }
 
@@ -120,6 +123,7 @@ const BrandIcons = styled.div`
     @media (min-width: 640px) {
       top: 4rem;
       right: 1rem;
+      bottom: unset;
     }
   }
 `;
