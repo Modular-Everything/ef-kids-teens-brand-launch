@@ -69,6 +69,7 @@ const Timeline = ({ data }) => {
         spaceBetween={24}
         onSwiper={(swiper) => handleTranslate(swiper)}
         onSetTranslate={(swiper) => handleTranslate(swiper)}
+        onResize={(swiper) => handleTranslate(swiper)}
         watchSlidesVisibility
         // centeredSlides
       >
