@@ -64,57 +64,104 @@ const BrandIcons = styled.div`
   height: 100%;
   pointer-events: none;
 
+  & img {
+    width: 5rem;
+
+    @media (min-width: 960px) {
+      width: unset;
+    }
+  }
+
   & > * {
     position: absolute;
   }
 
   & img:nth-of-type(1) {
-    bottom: 4rem;
+    /* Pink */
+    top: -7rem;
     animation: ${FloatAnim} 30s linear infinite;
+
+    @media (min-width: 640px) {
+      bottom: 4rem;
+    }
   }
 
   & img:nth-of-type(2) {
-    bottom: -4rem;
-    left: 5%;
+    /* Orange */
+    top: -3rem;
+    left: 35%;
     animation: ${FloatAnimAlt} 15s linear infinite;
+
+    @media (min-width: 640px) {
+      bottom: -4rem;
+      left: 5%;
+    }
   }
 
   & img:nth-of-type(3) {
-    top: -3rem;
-    right: 25%;
+    /* Green */
+    right: 30%;
+    bottom: -3.5rem;
     animation: ${FloatAnim} 15s linear infinite;
     animation-direction: alternate-reverse;
+
+    @media (min-width: 640px) {
+      top: -3rem;
+      right: 25%;
+    }
   }
 
   & img:nth-of-type(4) {
-    top: 4rem;
+    /* Blue */
     right: 1rem;
+    bottom: -2rem;
     animation: ${FloatAnimAlt} 30s linear infinite;
+
+    @media (min-width: 640px) {
+      top: 4rem;
+      right: 1rem;
+    }
   }
 `;
 
 const CardContent = styled.div`
   z-index: 5;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin: 0 4rem;
-  padding: 4rem 0 4rem 4rem;
+  margin: 0;
+  padding: 2rem;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
 
+  @media (min-width: 640px) {
+    flex-direction: row;
+    margin: 0 4rem;
+    padding: 4rem 0 4rem 4rem;
+  }
+
   & .cta__caption {
     align-items: center;
-    width: 55%;
+    width: 100%;
+
+    @media (min-width: 640px) {
+      width: 55%;
+    }
   }
 
   & .cta__link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    width: 100%;
+    margin-top: 2rem;
+
+    @media (min-width: 640px) {
+      width: 45%;
+      margin-top: 0;
+    }
   }
 
   & h3 {
