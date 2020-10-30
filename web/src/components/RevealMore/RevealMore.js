@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ArrowDown from '../../assets/icons/arrow-down.svg';
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
@@ -21,7 +21,7 @@ const RevealMore = ({ label, spacing }) => {
   }
 
   return (
-    <RevealMoreWrap ref={RevealRef} style={handleSpace(spacing)}>
+    <RevealMoreWrap ref={RevealRef} style={useSpace(spacing)}>
       <button type="button" onClick={() => scrollTo()}>
         <span>{label}</span>
         <img src={ArrowDown} alt="" />

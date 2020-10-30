@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
 const CardGrid = ({ children, hasCaption, spacing }) => (
-  <Grid hasCaption={hasCaption} style={handleSpace(spacing)}>
+  <Grid hasCaption={hasCaption} style={useSpace(spacing)}>
     {children}
   </Grid>
 );

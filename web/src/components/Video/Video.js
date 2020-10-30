@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player/vimeo';
 
 import PlayIcon from '../../assets/icons/play.svg';
 import FullWidthBg from '../../assets/images/videoPlaceholder.png';
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
@@ -54,7 +54,7 @@ const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
   // * Return player
 
   return (
-    <article style={handleSpace(spacing)}>
+    <article style={useSpace(spacing)}>
       <FullWidthVideo type={type}>
         <ReactPlayer
           url={videoData}

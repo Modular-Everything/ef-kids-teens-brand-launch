@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
@@ -21,7 +21,7 @@ const PageContainer = styled.div`
 `;
 
 const Container = ({ children, className, spacing }) => (
-  <PageContainer className={className} style={handleSpace(spacing)}>
+  <PageContainer className={className} style={useSpace(spacing)}>
     {children}
   </PageContainer>
 );

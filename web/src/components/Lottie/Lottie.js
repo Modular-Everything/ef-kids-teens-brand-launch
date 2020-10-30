@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Lottie from 'react-lottie';
 
 import * as animationData from './ef.json';
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
@@ -18,7 +18,7 @@ const LottieAnim = ({ spacing }) => {
   return (
     <Lottie
       options={defaultOptions}
-      style={(handleSpace(spacing), { border: '1px solid #ddd' })}
+      style={(useSpace(spacing), { border: '1px solid #ddd' })}
     />
   );
 };

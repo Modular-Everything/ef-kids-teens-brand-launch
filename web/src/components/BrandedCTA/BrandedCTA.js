@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
 
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 import Button from '../Button';
 import Pink from '../../assets/brand/brand-block-pink.svg';
 import Blue from '../../assets/brand/brand-block-blue.svg';
@@ -13,7 +12,7 @@ import Orange from '../../assets/brand/brand-block-orange.svg';
 //
 
 const BrandedCTA = ({ title, copy, ctaLabel, ctaLink, spacing }) => (
-  <CardWrapper style={handleSpace(spacing)}>
+  <CardWrapper style={useSpace(spacing)}>
     <CardContent>
       <div className="cta__caption">
         <h3>{title}</h3>
@@ -65,7 +64,7 @@ const BrandIcons = styled.div`
   pointer-events: none;
 
   & img {
-    width: 5rem;
+    width: 4rem;
 
     @media (min-width: 960px) {
       width: unset;
@@ -78,7 +77,7 @@ const BrandIcons = styled.div`
 
   & img:nth-of-type(1) {
     /* Pink */
-    top: -7rem;
+    top: -4.5rem;
     animation: ${FloatAnim} 30s linear infinite;
 
     @media (min-width: 640px) {
@@ -89,7 +88,7 @@ const BrandIcons = styled.div`
 
   & img:nth-of-type(2) {
     /* Orange */
-    top: -3rem;
+    top: -2.5rem;
     left: 35%;
     animation: ${FloatAnimAlt} 15s linear infinite;
 

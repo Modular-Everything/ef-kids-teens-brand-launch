@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import handleSpace from '../../helpers/handleSpace';
+import useSpace from '../../hooks/useSpace';
 
 //
 
 const SectionIntro = ({ title, copy, small, spacing }) => (
-  <IntroWrap style={handleSpace(spacing)}>
+  <IntroWrap style={useSpace(spacing)}>
     <Title>{small ? <h3>{title}</h3> : <h2>{title}</h2>}</Title>
 
     <Paragraph>
