@@ -7,5 +7,5 @@ export default {
       type: "talkingHead",
     },
   ],
-  validation: (Rule) => Rule.length(4),
+  validation: (Rule) => Rule.min(1).max(4),
 };

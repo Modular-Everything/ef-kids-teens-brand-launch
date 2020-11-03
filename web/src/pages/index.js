@@ -43,32 +43,25 @@ const IndexPage = ({ location, data }) => {
           spacing={[0, 64]}
         />
 
-        <CardGrid hasCaption>
+        {sanity.talkingHeads.length > 1 ? (
+          <CardGrid hasCaption>
+            {sanity.talkingHeads.map((head) => (
+              <Video
+                videoData={head.url}
+                type="card"
+                captionTitle={head.captionTitle}
+                captionCopy={head.captionCopy}
+              />
+            ))}
+          </CardGrid>
+        ) : (
           <Video
-            videoData="https://vimeo.com/432893400"
+            videoData={sanity.talkingHeads[0].url}
             type="card"
-            captionTitle="Joel Hladecek"
-            captionCopy="Chief Creative Officer, EF"
+            captionTitle={sanity.talkingHeads[0].captionTitle}
+            captionCopy={sanity.talkingHeads[0].captionCopy}
           />
-          <Video
-            videoData="https://vimeo.com/432893400"
-            type="card"
-            captionTitle="Jonathan Hall"
-            captionCopy="President, Kids &amp; Teens, International"
-          />
-          <Video
-            videoData="https://vimeo.com/432893400"
-            type="card"
-            captionTitle="Jacob Toren"
-            captionCopy="CEO, EF Education First, China"
-          />
-          <Video
-            videoData="https://vimeo.com/432893400"
-            type="card"
-            captionTitle="Musa Sunandar"
-            captionCopy="Designer, Kids &amp; Teens, Indonesia"
-          />
-        </CardGrid>
+        )}
       </Container>
 
       <Container spacing={[180, 180]}>
@@ -110,12 +103,10 @@ const IndexPage = ({ location, data }) => {
         <Video videoData="https://vimeo.com/432893400" type="card" />
       </Container>
 
-      <Container>
-        <SectionIntro
-          title={sanity.questionsCopy.title}
+      {/* 
+                  title={sanity.questionsCopy.title}
           copy={sanity.questionsCopy.paragraph}
-        />
-      </Container>
+      */}
     </Layout>
   );
 };
@@ -181,6 +172,14 @@ export const query = graphql`
         title
         paragraph
         buttonLabel
+      }
+
+      # Talking Head(s)
+      talkingHeads {
+        _key
+        url
+        captionTitle
+        captionCopy
       }
 
       # SectionIntro Copy
