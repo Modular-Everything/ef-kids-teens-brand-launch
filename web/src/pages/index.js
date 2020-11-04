@@ -12,6 +12,7 @@ import RevealMore from '../components/RevealMore';
 import Video from '../components/Video';
 import CardGrid from '../components/CardGrid';
 import BrandedCTA from '../components/BrandedCTA';
+import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
 
 //
 
@@ -103,10 +104,11 @@ const IndexPage = ({ location, data }) => {
         <Video videoData="https://vimeo.com/432893400" type="card" />
       </Container>
 
-      {/* 
-                  title={sanity.questionsCopy.title}
-          copy={sanity.questionsCopy.paragraph}
-      */}
+      <AnyQuestionsCTA
+        title={sanity.questionsCopy.title}
+        copy={sanity.questionsCopy.paragraph}
+        spacing={[20, 140]}
+      />
     </Layout>
   );
 };
