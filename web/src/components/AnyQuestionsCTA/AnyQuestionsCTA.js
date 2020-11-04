@@ -1,39 +1,105 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import useSpace from '../../hooks/useSpace';
 import Container from '../Container';
+import Button from '../Button';
 import Pink from '../../assets/brand/block-pink.svg';
 import Blue from '../../assets/brand/block-blue.svg';
 import Green from '../../assets/brand/block-green.svg';
 import Orange from '../../assets/brand/block-orange.svg';
+import Arrow from '../../assets/icons/chevron-down.svg';
 
 //
 
-const AnyQuestionsCTA = ({ title, copy, spacing }) => (
-  <CTAWrap style={useSpace(spacing)}>
-    <FormWrap>
-      <Title>{title}</Title>
-      <Paragraph>{copy}</Paragraph>
+const AnyQuestionsCTA = ({ title, copy, spacing }) => {
+  // *
+  // * Set our form state
 
-      <form style={{ marginTop: 50 }}>
-        <input style={{ height: 50, display: 'block' }} />
-        <input style={{ height: 50, display: 'block' }} />
-        <input style={{ height: 50, display: 'block' }} />
-        <input style={{ height: 50, display: 'block' }} />
-        <input style={{ height: 50, display: 'block' }} />
-      </form>
-    </FormWrap>
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [jobTitle, setJobTitle] = useState('');
+  const [queryType, setQueryType] = useState('placeholder');
+  const [message, setMessage] = useState('');
 
-    <BrandIcons>
-      <img src={Pink} alt="" />
-      <img src={Orange} alt="" />
-      <img src={Green} alt="" />
-      <img src={Blue} alt="" />
-    </BrandIcons>
-  </CTAWrap>
-);
+  useEffect(() => {
+    console.log('content:', queryType);
+  }, [queryType]);
+
+  // *
+  // * Return
+
+  return (
+    <CTAWrap style={useSpace(spacing)}>
+      <FormWrap>
+        <Title>{title}</Title>
+        <Paragraph>{copy}</Paragraph>
+
+        <Form>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <input
+            type="text"
+            name="jobTitle"
+            placeholder="Job Title"
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
+          />
+
+          <select
+            name="queryType"
+            defaultValue="placeholder"
+            value={queryType}
+            onChange={(e) => setQueryType(e.target.value)}
+            required
+            style={{ color: queryType !== 'placeholder' && '#191919' }}
+          >
+            <option value="placeholder" disabled hidden>
+              Query Type
+            </option>
+            <option value="sampleQuery">Sample Query</option>
+            <option value="anotherQuery">Another Query</option>
+          </select>
+
+          <textarea
+            placeholder="Write your message here"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          />
+
+          <ButtonWrap>
+            <Button label="Submit" form={() => console.log('pressed')} />
+          </ButtonWrap>
+        </Form>
+      </FormWrap>
+
+      <BrandIcons>
+        <img src={Pink} alt="" />
+        <img src={Orange} alt="" />
+        <img src={Green} alt="" />
+        <img src={Blue} alt="" />
+      </BrandIcons>
+    </CTAWrap>
+  );
+};
 
 export default AnyQuestionsCTA;
 
@@ -41,6 +107,62 @@ export default AnyQuestionsCTA;
 
 const CTAWrap = styled.section`
   position: relative;
+`;
+
+const Form = styled.form`
+  display: flex;
+  margin: 1rem -0.75rem -0.75rem;
+
+  @media (max-width: 640px) {
+    flex-wrap: wrap;
+  }
+
+  & input,
+  & select,
+  & textarea {
+    width: calc(50% - 1.5rem);
+    margin: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 400 !important;
+    font-size: 1rem;
+    border: 1px solid rgba(25, 25, 25, 0.5);
+    border-radius: 4px;
+
+    @media (max-width: 640px) {
+      width: 100%;
+    }
+
+    &::placeholder {
+      color: rgba(25, 25, 25, 0.5);
+    }
+  }
+
+  & select {
+    color: rgba(25, 25, 25, 0.25);
+    background-image: url(${Arrow});
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.85em auto;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 1.5rem);
+  margin: 0.75rem;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 const FormWrap = styled(Container)`
