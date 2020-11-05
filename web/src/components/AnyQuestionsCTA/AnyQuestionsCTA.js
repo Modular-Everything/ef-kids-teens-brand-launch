@@ -111,10 +111,10 @@ const CTAWrap = styled.section`
 
 const Form = styled.form`
   display: flex;
+  flex-wrap: wrap;
   margin: 1rem -0.75rem -0.75rem;
 
   @media (max-width: 640px) {
-    flex-wrap: wrap;
   }
 
   & input,
