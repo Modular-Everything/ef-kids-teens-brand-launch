@@ -23,10 +23,6 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
   const [queryType, setQueryType] = useState('placeholder');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    console.log('content:', queryType);
-  }, [queryType]);
-
   // *
   // * Return
 
