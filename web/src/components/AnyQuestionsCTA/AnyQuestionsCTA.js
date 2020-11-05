@@ -114,9 +114,6 @@ const Form = styled.form`
   flex-wrap: wrap;
   margin: 1rem -0.75rem -0.75rem;
 
-  @media (max-width: 640px) {
-  }
-
   & input,
   & select,
   & textarea {
