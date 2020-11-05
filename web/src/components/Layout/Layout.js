@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from '../Header';
+import Footer from '../Footer';
 
 //
 
@@ -24,6 +25,7 @@ const Layout = ({ children, location }) => {
         back={location.pathname !== '/'}
       />
       <main role="main">{children}</main>
+      <Footer />
     </>
   );
 };
