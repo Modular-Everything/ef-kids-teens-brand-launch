@@ -26,7 +26,7 @@ const ButtonWrap = styled(Link)`
   align-items: center;
   justify-content: center;
   height: 3rem;
-  padding: 1.5rem;
+  padding: 0.5rem 1.5rem;
   color: #fff;
   font-weight: 400;
   font-size: 0.875rem;
@@ -47,7 +47,7 @@ const ButtonWrapForm = styled.button`
   align-items: center;
   justify-content: center;
   height: 3rem;
-  padding: 1.5rem;
+  padding: 0.5rem 1.5rem;
   color: #fff;
   font-weight: 400;
   font-size: 0.875rem;
