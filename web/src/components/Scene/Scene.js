@@ -64,7 +64,8 @@ const Scene = () => {
       function (x, y) {
         const scale = Common.random(0.5, 0.75);
         const Blocks = Bodies.rectangle(x, y, 200 * scale, 200 * scale, {
-          restitution: 0.5,
+          restitution: 0.75,
+          friction: 0.65,
           render: {
             sprite: {
               texture: Common.choose([
