@@ -139,10 +139,6 @@ const Form = styled.form`
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    &::-ms-expand {
-      display: none;
-    }
   }
 `;
 
