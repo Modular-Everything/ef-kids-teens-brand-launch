@@ -26,7 +26,14 @@ const Caption = ({ title, copy }) => (
 
 //
 
-const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
+const Video = ({
+  videoData,
+  type,
+  captionTitle,
+  captionCopy,
+  spacing,
+  matter,
+}) => {
   // * Define refs
 
   const VideoRef = useRef(null);
@@ -45,8 +52,6 @@ const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
     VideoRef.current.wrapper.parentNode.style.paddingBottom = `${aspectRatio.current}%`;
   }
 
-  if (!videoData) return null;
-
   // * Does it have a caption?
 
   const hasCaption = captionTitle || captionCopy;
@@ -54,7 +59,7 @@ const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
   // * Return player
 
   return (
-    <article style={useSpace(spacing)}>
+    <article style={useSpace(spacing)} ref={matter}>
       <FullWidthVideo type={type}>
         <ReactPlayer
           url={videoData}

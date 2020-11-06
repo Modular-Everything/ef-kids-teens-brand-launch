@@ -17,9 +17,14 @@ import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
 //
 
 const IndexPage = ({ location, data }) => {
-  const sanity = data.sanityPage;
+  // *
+  // * Set up sanity
 
+  const sanity = data.sanityPage;
   console.log(sanity);
+
+  // *
+  // * Return it
 
   return (
     <Layout location={location}>

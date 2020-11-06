@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import Header from '../Header';
 import Footer from '../Footer';
@@ -20,6 +21,13 @@ const Layout = ({ children, location }) => {
 
   return (
     <>
+      <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no"
+        />
+      </Helmet>
+
       <Header
         title={siteMeta.site.siteMetadata.title}
         back={location.pathname !== '/'}
