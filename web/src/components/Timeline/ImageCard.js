@@ -12,7 +12,10 @@ const ImageCard = ({ id, title, img, marker, dot, year }) => {
   return (
     <>
       <CardWrap>
-        <h3>{title}</h3>
+        <div className="title">
+          <h3>{title}</h3>
+          <Skrim />
+        </div>
         <Img fluid={img.fluid} alt="title" />
       </CardWrap>
 
@@ -48,9 +51,10 @@ const CardWrap = styled.div`
   & h3 {
     position: absolute;
     bottom: 0;
-    z-index: 10;
+    z-index: 15;
     width: 100%;
     margin: 0;
+    padding: 1rem;
     color: #fff;
     font-weight: 700;
     font-size: 1.5rem;
@@ -77,6 +81,20 @@ const MarkerWrap = styled.div`
     line-height: 1.5rem;
     text-align: center;
   }
+`;
+
+const Skrim = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 36.08%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
 `;
 
 const Dot = styled.div`

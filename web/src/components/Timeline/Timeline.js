@@ -71,7 +71,6 @@ const Timeline = ({ data }) => {
         onSetTranslate={(swiper) => handleTranslate(swiper)}
         onResize={(swiper) => handleTranslate(swiper)}
         watchSlidesVisibility
-        // centeredSlides
       >
         {data.map((node, index) => {
           const cardType = node._type;
