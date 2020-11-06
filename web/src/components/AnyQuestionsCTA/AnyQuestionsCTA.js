@@ -115,7 +115,7 @@ const Form = styled.form`
   & textarea {
     width: calc(50% - 1.5rem);
     margin: 0.75rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem;
     font-weight: 400 !important;
     font-size: 1rem;
     border: 1px solid rgba(25, 25, 25, 0.5);
