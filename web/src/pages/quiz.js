@@ -9,17 +9,7 @@ import SectionIntro from '../components/SectionIntro';
 import Button from '../components/Button';
 import StartLayout from '../components/Quiz/StartLayout';
 import CountdownLayout from '../components/Quiz/CountdownLayout';
-
-//
-
-const QuizLayout = ({ page }) => (
-  <section>
-    <h2>Quiz</h2>
-    <button type="button" onClick={() => page(3)}>
-      Next
-    </button>
-  </section>
-);
+import QuizLayout from '../components/Quiz/QuizLayout';
 
 //
 
@@ -39,7 +29,7 @@ const QuizPage = ({ location, data }) => {
   // * Set up sanity
 
   const sanity = data.sanityQuizPage;
-  console.log(sanity);
+  const questions = data.allSanityQuizQuestions;
 
   // *
   // * Set active page
@@ -61,10 +51,10 @@ const QuizPage = ({ location, data }) => {
       {activePage === 0 && (
         <StartLayout page={handlePageChange} sanity={sanity} />
       )}
-
       {activePage === 1 && <CountdownLayout page={handlePageChange} />}
-      {activePage === 2 && <QuizLayout page={handlePageChange} />}
-      {activePage === 3 && <ResultsLayout />}
+      {activePage === 2 && (
+        <QuizLayout page={handlePageChange} questions={questions} />
+      )}
     </Layout>
   );
 };
@@ -85,6 +75,15 @@ export const query = graphql`
       quizStartCopy {
         paragraph
         title
+      }
+    }
+
+    allSanityQuizQuestions {
+      nodes {
+        question
+        answers
+        correctAnswer
+        _id
       }
     }
   }
