@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Header from '../Header';
-import Footer from '../Footer';
 
 //
 
@@ -33,7 +32,6 @@ const Layout = ({ children, location }) => {
         back={location.pathname !== '/'}
       />
       <main role="main">{children}</main>
-      <Footer />
     </>
   );
 };

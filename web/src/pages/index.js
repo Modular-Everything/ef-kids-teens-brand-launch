@@ -13,6 +13,7 @@ import Video from '../components/Video';
 import CardGrid from '../components/CardGrid';
 import BrandedCTA from '../components/BrandedCTA';
 import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
+import Footer from '../components/Footer';
 
 //
 
@@ -27,94 +28,97 @@ const IndexPage = ({ location, data }) => {
   // * Return it
 
   return (
-    <Layout location={location}>
-      <Video videoData="https://vimeo.com/432893400" type="full" />
+    <>
+      <Layout location={location}>
+        <Video videoData="https://vimeo.com/432893400" type="full" />
 
-      <Container spacing={[132, 52]}>
-        <SectionIntro
-          title={sanity.openingCopy.title}
-          copy={sanity.openingCopy.paragraph}
-        />
-      </Container>
-
-      <Lottie />
-
-      <RevealMore label="Show me more" spacing={[80, 132]} />
-
-      <Container>
-        <SectionIntro
-          title={sanity.talkingHeadsCopy.title}
-          copy={sanity.talkingHeadsCopy.paragraph}
-          small
-          spacing={[0, 64]}
-        />
-
-        {sanity.talkingHeads.length > 1 ? (
-          <CardGrid hasCaption>
-            {sanity.talkingHeads.map((head) => (
-              <Video
-                videoData={head.url}
-                type="card"
-                captionTitle={head.captionTitle}
-                captionCopy={head.captionCopy}
-              />
-            ))}
-          </CardGrid>
-        ) : (
-          <Video
-            videoData={sanity.talkingHeads[0].url}
-            type="card"
-            captionTitle={sanity.talkingHeads[0].captionTitle}
-            captionCopy={sanity.talkingHeads[0].captionCopy}
+        <Container spacing={[132, 52]}>
+          <SectionIntro
+            title={sanity.openingCopy.title}
+            copy={sanity.openingCopy.paragraph}
           />
-        )}
-      </Container>
+        </Container>
 
-      <Container spacing={[180, 180]}>
-        <BrandedCTA
-          title={sanity.quizCta.title}
-          copy={sanity.quizCta.paragraph}
-          ctaLabel={sanity.quizCta.buttonLabel}
-          ctaLink="/quiz"
+        <Lottie />
+
+        <RevealMore label="Show me more" spacing={[80, 132]} />
+
+        <Container>
+          <SectionIntro
+            title={sanity.talkingHeadsCopy.title}
+            copy={sanity.talkingHeadsCopy.paragraph}
+            small
+            spacing={[0, 64]}
+          />
+
+          {sanity.talkingHeads.length > 1 ? (
+            <CardGrid hasCaption>
+              {sanity.talkingHeads.map((head) => (
+                <Video
+                  videoData={head.url}
+                  type="card"
+                  captionTitle={head.captionTitle}
+                  captionCopy={head.captionCopy}
+                />
+              ))}
+            </CardGrid>
+          ) : (
+            <Video
+              videoData={sanity.talkingHeads[0].url}
+              type="card"
+              captionTitle={sanity.talkingHeads[0].captionTitle}
+              captionCopy={sanity.talkingHeads[0].captionCopy}
+            />
+          )}
+        </Container>
+
+        <Container spacing={[180, 180]}>
+          <BrandedCTA
+            title={sanity.quizCta.title}
+            copy={sanity.quizCta.paragraph}
+            ctaLabel={sanity.quizCta.buttonLabel}
+            ctaLink="/quiz"
+          />
+        </Container>
+
+        <Container>
+          <SectionIntro
+            title={sanity.timelineCopy.title}
+            copy={sanity.timelineCopy.paragraph}
+            spacing={[0, 80]}
+          />
+        </Container>
+
+        <Timeline data={sanity.timeline} />
+
+        <Container spacing={[110, 140]}>
+          <LandscapeCard
+            image={sanity.guidelinesCta.ctaImage.asset}
+            title={sanity.guidelinesCta.ctaCopy.title}
+            copy={sanity.guidelinesCta.ctaCopy.paragraph}
+            ctaLabel={sanity.guidelinesCta.ctaLabel}
+            ctaLink={sanity.guidelinesCta.ctaLink}
+          />
+        </Container>
+
+        <Container spacing={[0, 120]}>
+          <SectionIntro
+            title={sanity.uniformInfo.uniformCopy.title}
+            copy={sanity.uniformInfo.uniformCopy.paragraph}
+            spacing={[0, 80]}
+          />
+
+          <Video videoData="https://vimeo.com/432893400" type="card" />
+        </Container>
+
+        <AnyQuestionsCTA
+          title={sanity.questionsCopy.title}
+          copy={sanity.questionsCopy.paragraph}
+          spacing={[20, 140]}
         />
-      </Container>
-
-      <Container>
-        <SectionIntro
-          title={sanity.timelineCopy.title}
-          copy={sanity.timelineCopy.paragraph}
-          spacing={[0, 80]}
-        />
-      </Container>
-
-      <Timeline data={sanity.timeline} />
-
-      <Container spacing={[110, 140]}>
-        <LandscapeCard
-          image={sanity.guidelinesCta.ctaImage.asset}
-          title={sanity.guidelinesCta.ctaCopy.title}
-          copy={sanity.guidelinesCta.ctaCopy.paragraph}
-          ctaLabel={sanity.guidelinesCta.ctaLabel}
-          ctaLink={sanity.guidelinesCta.ctaLink}
-        />
-      </Container>
-
-      <Container spacing={[0, 120]}>
-        <SectionIntro
-          title={sanity.uniformInfo.uniformCopy.title}
-          copy={sanity.uniformInfo.uniformCopy.paragraph}
-          spacing={[0, 80]}
-        />
-
-        <Video videoData="https://vimeo.com/432893400" type="card" />
-      </Container>
-
-      <AnyQuestionsCTA
-        title={sanity.questionsCopy.title}
-        copy={sanity.questionsCopy.paragraph}
-        spacing={[20, 140]}
-      />
-    </Layout>
+      </Layout>
+      <Footer />
+    </>
   );
 };
 
