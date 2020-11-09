@@ -4,6 +4,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './page';
+import quizPage from './quizPage';
 import quizQuestions from './quizQuestions';
 import vimeo from './vimeo';
 import vimeoCaption from './vimeoCaption';
@@ -18,6 +19,7 @@ import singleCard from './singleCard';
 import imageCard from './imageCard';
 import guidelinesCta from './guidelinesCta';
 import uniformInfo from './uniformInfo';
+import quizResult from './quizResult';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,6 +30,7 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     page,
+    quizPage,
     quizQuestions,
     titleCopy,
     vimeo,
@@ -42,5 +45,6 @@ export default createSchema({
     imageCard,
     guidelinesCta,
     uniformInfo,
+    quizResult
   ]),
 });

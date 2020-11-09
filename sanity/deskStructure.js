@@ -15,7 +15,9 @@ export default () =>
           S.list()
             .title("Quiz")
             .items([
-              S.listItem().title("Quiz Page"),
+              S.listItem()
+                .title("Quiz Page")
+                .child(S.editor().schemaType("quizPage").documentId("quizIndex")),
               S.listItem()
                 .title("Questions")
                 .schemaType("quizQuestions")
