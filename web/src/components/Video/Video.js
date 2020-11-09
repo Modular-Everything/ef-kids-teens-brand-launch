@@ -26,14 +26,7 @@ const Caption = ({ title, copy }) => (
 
 //
 
-const Video = ({
-  videoData,
-  type,
-  captionTitle,
-  captionCopy,
-  spacing,
-  matter,
-}) => {
+const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
   // * Define refs
 
   const VideoRef = useRef(null);
@@ -59,7 +52,7 @@ const Video = ({
   // * Return player
 
   return (
-    <article style={useSpace(spacing)} ref={matter}>
+    <article style={useSpace(spacing)}>
       <FullWidthVideo type={type}>
         <ReactPlayer
           url={videoData}
