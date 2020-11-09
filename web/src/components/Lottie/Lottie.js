@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Lottie from 'react-lottie';
+import styled from 'styled-components';
 
-import * as animationData from './ef.json';
+import * as animationData from '../../assets/K&T_Indonesia_Blocks_Animation.json';
 import useSpace from '../../hooks/useSpace';
 
 //
@@ -12,18 +13,28 @@ const LottieAnim = ({ spacing }) => {
     loop: true,
     autoplay: true,
     animationData: animationData.default,
-    renderer: 'canvas',
+    renderer: 'svg',
+    rendererSettings: {
+      preserveAspectRatio: 'xMinYMin slice',
+    },
   };
 
   return (
-    <Lottie
-      options={defaultOptions}
-      style={(useSpace(spacing), { border: '1px solid #ddd' })}
-    />
+    <LottieWrap style={useSpace(spacing)}>
+      <Lottie options={defaultOptions} />
+    </LottieWrap>
   );
 };
 
 export default LottieAnim;
+
+//
+
+const LottieWrap = styled.section`
+  & svg {
+    transform: translate3d(-20vw, 0px, 0px) !important;
+  }
+`;
 
 //
 
