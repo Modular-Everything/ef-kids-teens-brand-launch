@@ -34,7 +34,7 @@ const QuizPage = ({ location, data }) => {
   // *
   // * Set active page
 
-  const [activePage, setActivePage] = useState(0);
+  const [activePage, setActivePage] = useState(2);
 
   // *
   // * Handle 'page' change
@@ -53,7 +53,7 @@ const QuizPage = ({ location, data }) => {
       )}
       {activePage === 1 && <CountdownLayout page={handlePageChange} />}
       {activePage === 2 && (
-        <QuizLayout page={handlePageChange} questions={questions} />
+        <QuizLayout page={handlePageChange} questions={questions.nodes} />
       )}
     </Layout>
   );
