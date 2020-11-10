@@ -37,7 +37,7 @@ export default Answer;
 
 Answer.propTypes = {
   label: PropTypes.string.isRequired,
-  correctAnswer: PropTypes.number.isRequired,
+  correctAnswer: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   handleUserAnswer: PropTypes.func.isRequired,
 };

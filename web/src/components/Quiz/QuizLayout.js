@@ -86,6 +86,7 @@ const QuizLayout = ({ questions }) => {
     const isCorrect = index + 1 === quizProgress.correctAnswer;
     return (
       <Answer
+        key={index}
         label={answer}
         correctAnswer={isCorrect}
         id={index + 1}
@@ -105,6 +106,7 @@ const QuizLayout = ({ questions }) => {
             Question {quizProgress.questionNumber} of{' '}
             {quizProgress.totalQuestions}
           </h2>
+
           <h1>{quizProgress.question}</h1>
 
           {currentQuestions}
