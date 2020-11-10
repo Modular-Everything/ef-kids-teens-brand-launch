@@ -99,24 +99,26 @@ const QuizLayout = ({ questions, sanity }) => {
   // * Return
 
   return (
-    <Container spacing={[80, 80]}>
+    <>
       {!quizProgress.completed ? (
-        <div ref={quizRef}>
-          <h2>
-            Question {quizProgress.questionNumber} of{' '}
-            {quizProgress.totalQuestions}
-          </h2>
+        <Container spacing={[80, 80]}>
+          <div ref={quizRef}>
+            <h2>
+              Question {quizProgress.questionNumber} of{' '}
+              {quizProgress.totalQuestions}
+            </h2>
 
-          <h1>{quizProgress.question}</h1>
+            <h1>{quizProgress.question}</h1>
 
-          {currentQuestions}
-        </div>
+            {currentQuestions}
+          </div>
+        </Container>
       ) : (
         <div style={{ pointerEvents: 'all' }}>
           <QuizResults results={quizProgress} sanity={sanity} />
         </div>
       )}
-    </Container>
+    </>
   );
 };
 

@@ -25,8 +25,8 @@ const BgBlocks = styled.img`
   width: 100vw;
   pointer-events: none;
 
-  @media (min-width: 1400px) {
-    bottom: -15vh;
+  @media (min-width: 1500px) {
+    bottom: -12vh;
   }
 `;
 
