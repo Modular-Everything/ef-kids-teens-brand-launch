@@ -8,7 +8,7 @@ import Button from '../Button';
 
 //
 
-const QuizLayout = ({ questions }) => {
+const QuizLayout = ({ questions, sanity }) => {
   // *
   // * Get our quiz container reference
 
@@ -76,30 +76,7 @@ const QuizLayout = ({ questions }) => {
           completed: true,
         }));
       }
-    }, [1000]);
-  }
-
-  // *
-  // * Total score
-  // ! Might not need this? But it does show that the total is incrementing.
-
-  useEffect(() => {
-    console.log(`Score: ${quizProgress.totalCorrect}`);
-  }, [quizProgress]);
-
-  // *
-  // * Reset quiz
-
-  function resetQuiz() {
-    setQuizProgress((quiz) => ({
-      ...quiz,
-      questionNumber: 1,
-      question: questions[0].question,
-      answers: questions[0].answers,
-      correctAnswer: questions[0].correctAnswer,
-      totalCorrect: 0,
-      completed: false,
-    }));
+    }, [0]);
   }
 
   // *
@@ -137,7 +114,7 @@ const QuizLayout = ({ questions }) => {
         </div>
       ) : (
         <div>
-          <QuizResults results={quizProgress} />
+          <QuizResults results={quizProgress} sanity={sanity} />
         </div>
       )}
 
@@ -154,4 +131,5 @@ export default QuizLayout;
 
 QuizLayout.propTypes = {
   questions: PropTypes.array.isRequired,
+  sanity: PropTypes.object.isRequired,
 };

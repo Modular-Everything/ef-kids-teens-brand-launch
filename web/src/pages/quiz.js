@@ -53,7 +53,11 @@ const QuizPage = ({ location, data }) => {
       )}
       {activePage === 1 && <CountdownLayout page={handlePageChange} />}
       {activePage === 2 && (
-        <QuizLayout page={handlePageChange} questions={questions.nodes} />
+        <QuizLayout
+          page={handlePageChange}
+          questions={questions.nodes}
+          sanity={sanity.quizResults}
+        />
       )}
     </Layout>
   );
