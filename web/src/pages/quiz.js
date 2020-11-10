@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import Layout from '../components/Layout';
-import Container from '../components/Container';
-import SectionIntro from '../components/SectionIntro';
-import Button from '../components/Button';
 import StartLayout from '../components/Quiz/StartLayout';
 import CountdownLayout from '../components/Quiz/CountdownLayout';
 import QuizLayout from '../components/Quiz/QuizLayout';
