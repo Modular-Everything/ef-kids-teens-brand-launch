@@ -13,17 +13,6 @@ import QuizLayout from '../components/Quiz/QuizLayout';
 
 //
 
-const ResultsLayout = () => (
-  <section>
-    <h2>Results</h2>
-  </section>
-);
-
-//
-
-// *
-// * Bring it all together
-
 const QuizPage = ({ location, data }) => {
   // *
   // * Set up sanity

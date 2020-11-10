@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Container from '../Container';
 import Answer from './Answer';
@@ -33,6 +34,8 @@ const QuizLayout = ({ questions, sanity }) => {
   // ** Progress all of our defaults by +1
 
   function handleUserAnswer(e) {
+    if (window) window.scrollTo(0, 0);
+
     const {
       questionNumber,
       totalCorrect,
@@ -42,12 +45,6 @@ const QuizLayout = ({ questions, sanity }) => {
 
     const counter = questionNumber;
     const isCorrect = parseInt(e.currentTarget.value) === correctAnswer;
-
-    if (isCorrect) {
-      // TODO: Add some classes here for correct/incorrect
-      // * Use this to handle correct/incorrect stylings
-      console.log('correct!');
-    }
 
     // * Disable clicking other items before next question
     quizRef.current.style.pointerEvents = 'none';
@@ -75,25 +72,34 @@ const QuizLayout = ({ questions, sanity }) => {
           completed: true,
         }));
       }
-    }, [0]);
+    }, [1000]);
   }
 
   // *
   // * Current questions answers
   // ** Answer is correct if index === correctAnswer
 
-  const currentQuestions = quizProgress.answers.map((answer, index) => {
-    const isCorrect = index + 1 === quizProgress.correctAnswer;
-    return (
-      <Answer
-        key={index}
-        label={answer}
-        correctAnswer={isCorrect}
-        id={index + 1}
-        handleUserAnswer={handleUserAnswer}
-      />
-    );
-  });
+  const currentQuestions = quizProgress.answers.map((answer, index) => (
+    <Answer
+      key={index}
+      label={answer}
+      correctAnswer={quizProgress.correctAnswer}
+      id={index + 1}
+      handleUserAnswer={handleUserAnswer}
+    />
+  ));
+
+  // *
+  // * A quick timer
+
+  // setTimeout(
+  //   () =>
+  //     setQuizProgress((quiz) => ({
+  //       ...quiz,
+  //       completed: true,
+  //     })),
+  //   [2000]
+  // );
 
   // *
   // * Return
@@ -101,18 +107,22 @@ const QuizLayout = ({ questions, sanity }) => {
   return (
     <>
       {!quizProgress.completed ? (
-        <Container spacing={[80, 80]}>
-          <div ref={quizRef}>
+        <QuizWrap spacing={[80, 80]}>
+          <div className="timer">
+            <h5>01:28</h5>
+          </div>
+
+          <div ref={quizRef} className="questions">
             <h2>
               Question {quizProgress.questionNumber} of{' '}
               {quizProgress.totalQuestions}
             </h2>
 
-            <h1>{quizProgress.question}</h1>
+            <p>{quizProgress.question}</p>
 
-            {currentQuestions}
+            <Answers>{currentQuestions}</Answers>
           </div>
-        </Container>
+        </QuizWrap>
       ) : (
         <div style={{ pointerEvents: 'all' }}>
           <QuizResults results={quizProgress} sanity={sanity} />
@@ -123,6 +133,43 @@ const QuizLayout = ({ questions, sanity }) => {
 };
 
 export default QuizLayout;
+
+//
+
+const QuizWrap = styled(Container)`
+  display: flex;
+
+  & .timer {
+    width: 25%;
+  }
+
+  & .questions {
+    width: calc(40% - 1rem);
+    margin-left: 1rem;
+
+    & p {
+      margin-top: 2rem;
+      color: var(--ef-black);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  & .timer h5,
+  & .questions h2 {
+    margin: 0;
+    color: var(--ef-black);
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+`;
+
+const Answers = styled.ol`
+  margin: 3.5rem 0 0 0;
+  padding: 0;
+`;
 
 //
 
