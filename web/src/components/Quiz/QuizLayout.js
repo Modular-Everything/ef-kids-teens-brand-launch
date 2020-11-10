@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Container from '../Container';
 import Answer from './Answer';
 import QuizResults from './QuizResults';
+import Button from '../Button';
 
 //
 
 const QuizLayout = ({ questions }) => {
+  // *
+  // * Get our quiz container reference
+
+  const quizRef = useRef(null);
+
   // *
   // * Set up our quiz state
   // ** Set a bunch of defaults
@@ -19,40 +25,58 @@ const QuizLayout = ({ questions }) => {
     answers: questions[0].answers,
     correctAnswer: questions[0].correctAnswer,
     totalCorrect: 0,
+    totalAnswers: 0,
     completed: false,
   });
 
   // *
   // * Handle user answer
-  // ** Progress all of our defaults by 1
+  // ** Progress all of our defaults by +1
 
   function handleUserAnswer(e) {
-    const counter = quizProgress.questionNumber;
-    const total = quizProgress.totalCorrect;
-    const isCorrect =
-      parseInt(e.currentTarget.value) === quizProgress.correctAnswer;
+    const {
+      questionNumber,
+      totalCorrect,
+      totalAnswers,
+      correctAnswer,
+    } = quizProgress;
+
+    const counter = questionNumber;
+    const isCorrect = parseInt(e.currentTarget.value) === correctAnswer;
 
     if (isCorrect) {
       // TODO: Add some classes here for correct/incorrect
+      // * Use this to handle correct/incorrect stylings
       console.log('correct!');
     }
 
-    if (quizProgress.questionNumber < quizProgress.totalQuestions) {
-      setQuizProgress((quiz) => ({
-        ...quiz,
-        questionNumber: counter + 1,
-        question: questions[counter].question,
-        answers: questions[counter].answers,
-        correctAnswer: questions[counter].correctAnswer,
-        totalCorrect: isCorrect ? total + 1 : total,
-      }));
-    } else {
-      setQuizProgress((quiz) => ({
-        ...quiz,
-        totalCorrect: isCorrect ? total + 1 : total,
-        completed: true,
-      }));
-    }
+    // * Disable clicking other items before next question
+    quizRef.current.style.pointerEvents = 'none';
+
+    setTimeout(() => {
+      if (quizProgress.questionNumber < quizProgress.totalQuestions) {
+        // * Progress the quiz
+        setQuizProgress((quiz) => ({
+          ...quiz,
+          questionNumber: counter + 1,
+          question: questions[counter].question,
+          answers: questions[counter].answers,
+          correctAnswer: questions[counter].correctAnswer,
+          totalCorrect: isCorrect ? totalCorrect + 1 : totalCorrect,
+          totalAnswers: totalAnswers + 1,
+        }));
+
+        // * Re-enable clicking
+        quizRef.current.style.pointerEvents = 'all';
+      } else {
+        // * Output the results
+        setQuizProgress((quiz) => ({
+          ...quiz,
+          totalCorrect: isCorrect ? totalCorrect + 1 : totalCorrect,
+          completed: true,
+        }));
+      }
+    }, [1000]);
   }
 
   // *
@@ -63,8 +87,8 @@ const QuizLayout = ({ questions }) => {
     console.log(`Score: ${quizProgress.totalCorrect}`);
   }, [quizProgress]);
 
-  // !
-  // ! Reset quiz (temporary and should be removed)
+  // *
+  // * Reset quiz
 
   function resetQuiz() {
     setQuizProgress((quiz) => ({
@@ -101,7 +125,7 @@ const QuizLayout = ({ questions }) => {
   return (
     <Container spacing={[80, 80]}>
       {!quizProgress.completed ? (
-        <>
+        <div ref={quizRef}>
           <h2>
             Question {quizProgress.questionNumber} of{' '}
             {quizProgress.totalQuestions}
@@ -110,20 +134,16 @@ const QuizLayout = ({ questions }) => {
           <h1>{quizProgress.question}</h1>
 
           {currentQuestions}
-        </>
+        </div>
       ) : (
-        <QuizResults results={quizProgress} />
+        <div>
+          <QuizResults results={quizProgress} />
+        </div>
       )}
 
       <hr />
 
-      <button type="button" onClick={() => handleUserAnswer()}>
-        Next Question
-      </button>
-
-      <button type="button" onClick={() => resetQuiz()}>
-        Reset quiz
-      </button>
+      <Button label="Reset" form={() => window.location.reload()} />
     </Container>
   );
 };

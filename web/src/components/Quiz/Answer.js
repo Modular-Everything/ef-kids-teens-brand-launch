@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { camelCase, truncate } from 'lodash';
+import styled from 'styled-components';
 
 //
 
@@ -25,7 +26,6 @@ const Answer = ({ label, correctAnswer, id, handleUserAnswer }) => {
         id={labelID}
         value={id}
         onChange={(e) => handleUserAnswer(e)}
-        // disabled={answer}
       />
     </label>
   );
