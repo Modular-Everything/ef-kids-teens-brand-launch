@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../Button';
+
 //
 
 const QuizResults = ({ results, sanity }) => {
@@ -35,6 +37,9 @@ const QuizResults = ({ results, sanity }) => {
       <div>
         <h2>{resultsMessage.resultTitle}</h2>
         <p>{resultsMessage.resultCaption}</p>
+        {percentCorrect !== 100 && (
+          <Button label="Try Again" form={() => window.location.reload()} />
+        )}
       </div>
     </div>
   );

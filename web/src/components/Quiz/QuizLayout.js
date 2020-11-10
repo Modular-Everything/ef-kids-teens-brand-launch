@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Container from '../Container';
 import Answer from './Answer';
 import QuizResults from './QuizResults';
-import Button from '../Button';
 
 //
 
@@ -113,14 +112,10 @@ const QuizLayout = ({ questions, sanity }) => {
           {currentQuestions}
         </div>
       ) : (
-        <div>
+        <div style={{ pointerEvents: 'all' }}>
           <QuizResults results={quizProgress} sanity={sanity} />
         </div>
       )}
-
-      <hr />
-
-      <Button label="Reset" form={() => window.location.reload()} />
     </Container>
   );
 };
