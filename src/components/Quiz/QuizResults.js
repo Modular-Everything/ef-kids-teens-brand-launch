@@ -3,13 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import resultCaptions from '../../data/resultCaptions';
 import Container from '../Container';
 import MoodyBlocks from '../MoodyBlocks';
 import Button from '../Button';
 
 //
 
-const QuizResults = ({ results, sanity }) => {
+const QuizResults = ({ results }) => {
   // *
   // * Figure out a percentage of correct answers
 
@@ -21,13 +22,13 @@ const QuizResults = ({ results, sanity }) => {
   // ** This is a bit messy but apparently is faster than switch
   let resultsMessage = null;
   if (percentCorrect === 0) {
-    resultsMessage = sanity[0];
+    resultsMessage = resultCaptions.quizResults[0];
   } else if (percentCorrect <= 66) {
-    resultsMessage = sanity[1];
+    resultsMessage = resultCaptions.quizResults[1];
   } else if (percentCorrect > 66 && percentCorrect < 100) {
-    resultsMessage = sanity[2];
+    resultsMessage = resultCaptions.quizResults[2];
   } else if (percentCorrect === 100) {
-    resultsMessage = sanity[3];
+    resultsMessage = resultCaptions.quizResults[3];
   }
 
   // *
