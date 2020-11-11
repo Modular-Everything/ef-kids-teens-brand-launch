@@ -54,11 +54,11 @@ const Scene = () => {
     // *
     // * Add some blocks
 
-    const stack = Composites.pyramid(
+    const stack = Composites.stack(
       percentX(25),
       percentY(25),
-      7,
-      6,
+      5,
+      5,
       25,
       25,
       function (x, y) {
@@ -85,6 +85,11 @@ const Scene = () => {
     );
 
     World.add(engine.world, stack);
+
+    // *
+    // * Turn off the gravity
+
+    engine.world.gravity.y = 0;
 
     // *
     // * Build our walls and add them to the world
