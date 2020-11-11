@@ -1,21 +1,27 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Container from '../Container';
 import Answer from './Answer';
 import QuizResults from './QuizResults';
+import Timer from './Timer';
 
 //
 
 const QuizLayout = ({ questions, sanity }) => {
   // *
-  // * Get our quiz container reference
+  // * Get quiz container reference
 
   const quizRef = useRef(null);
 
   // *
-  // * Set up our quiz state
+  // * Set up timer
+
+  const [timeRemaining, setTimeRemaining] = useState(90);
+
+  // *
+  // * Set up quiz state
   // ** Set a bunch of defaults
 
   const [quizProgress, setQuizProgress] = useState({
@@ -33,7 +39,7 @@ const QuizLayout = ({ questions, sanity }) => {
 
   // *
   // * Handle user answer
-  // ** Progress all of our defaults by +1
+  // ** Progress all defaults by +1
 
   function handleUserAnswer(id) {
     if (window) window.scrollTo(0, 0);
@@ -99,6 +105,19 @@ const QuizLayout = ({ questions, sanity }) => {
   ));
 
   // *
+  // * Show results if the timer runs out
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      setQuizProgress((quiz) => ({
+        ...quiz,
+        totalCorrect: quizProgress.totalCorrect,
+        completed: true,
+      }));
+    }
+  }, [timeRemaining, setQuizProgress]);
+
+  // *
   // * Return
 
   return (
@@ -106,7 +125,10 @@ const QuizLayout = ({ questions, sanity }) => {
       {!quizProgress.completed ? (
         <QuizWrap spacing={[80, 80]}>
           <div className="timer">
-            <h5>01:28</h5>
+            <Timer
+              timeRemaining={timeRemaining}
+              setTimeRemaining={setTimeRemaining}
+            />
           </div>
 
           <div ref={quizRef} className="questions">
