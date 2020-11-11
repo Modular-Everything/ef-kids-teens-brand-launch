@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 
+import sanity from '../data/sanity';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import Timeline from '../components/Timeline';
@@ -17,11 +17,10 @@ import Footer from '../components/Footer';
 
 //
 
-const IndexPage = ({ location, data }) => {
+const IndexPage = ({ location }) => {
   // *
   // * Set up sanity
 
-  const sanity = data.sanityPage;
   console.log(sanity);
 
   // *

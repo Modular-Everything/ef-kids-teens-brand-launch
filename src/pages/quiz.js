@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
+import sanity from '../data/sanity';
+import questions from '../data/questions';
 import Layout from '../components/Layout';
 import StartLayout from '../components/Quiz/StartLayout';
 import CountdownLayout from '../components/Quiz/CountdownLayout';
@@ -9,13 +11,7 @@ import QuizLayout from '../components/Quiz/QuizLayout';
 
 //
 
-const QuizPage = ({ location, data }) => {
-  // *
-  // * Set up sanity
-
-  const sanity = data.sanityQuizPage;
-  const questions = data.allSanityQuizQuestions;
-
+const QuizPage = ({ location }) => {
   // *
   // * Set active page
 

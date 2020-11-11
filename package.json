@@ -1,20 +1,64 @@
 {
+  "name": "ef-kids-teens-brand-launch-web",
   "private": true,
-  "name": "ef-kids-teens-brand-launch",
+  "description": "Website build showcasing the launch of the updated EF Kids & Teens brand.",
   "version": "0.1.0",
-  "scripts": {
-    "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel",
-    "format": "lerna run format",
-    "build-studio": "(cd sanity && npm run build)",
-    "build-web": "lerna bootstrap && (cd sanity && SANITY_AUTH_TOKEN=$SANITY_DEPLOY_STUDIO_TOKEN npm run graphql-deploy) && (cd web && npm run build)",
-    "graphql-deploy": "lerna run graphql-deploy",
-    "lint": "lerna run lint",
-    "postinstall": "lerna bootstrap",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Chrish Dunne <hey@chrish.design>",
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.11.1",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.24.83",
+    "gatsby-image": "^2.4.21",
+    "gatsby-plugin-styled-components": "^3.3.14",
+    "gatsby-source-sanity": "^6.0.4",
+    "install": "^0.13.0",
+    "lodash": "^4.17.20",
+    "matter-js": "^0.14.2",
+    "npm": "^6.14.8",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-helmet": "^6.1.0",
+    "react-lottie": "^1.2.3",
+    "react-player": "^2.6.2",
+    "sanitize.css": "^12.0.1",
+    "styled-components": "^5.2.0",
+    "swiper": "^6.3.4"
   },
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-wesbos": "^1.0.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "prettier": "^2.1.1",
+    "stylelint": "^13.7.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^4.1.0"
   },
-  "dependencies": {}
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
 }
