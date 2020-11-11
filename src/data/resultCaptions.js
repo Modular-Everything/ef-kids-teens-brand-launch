@@ -27,7 +27,8 @@ export default {
     },
   ],
   quizStartCopy: {
-    paragraph: 'This is the quiz! 10 questions will test your knowledge.',
+    paragraph:
+      'This is the Kids & Teens quiz! 10 questions will test your knowledge about the product in every way… if you complete the quiz and get 10/10 inside 2 minutes, you can submit your details to be included in the prize draw to win some great Kids & Teens merchandise. Let’s go!',
     title: 'Do you have what it takes..?',
   },
 };

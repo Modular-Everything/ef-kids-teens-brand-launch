@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import sanity from '../data/sanity';
+import sanity from '../data/resultCaptions';
 import questions from '../data/questions';
 import Layout from '../components/Layout';
 import StartLayout from '../components/Quiz/StartLayout';
@@ -14,7 +14,7 @@ const QuizPage = ({ location }) => {
   // *
   // * Set active page
 
-  const [activePage, setActivePage] = useState(2);
+  const [activePage, setActivePage] = useState(0);
 
   // *
   // * Handle 'page' change
