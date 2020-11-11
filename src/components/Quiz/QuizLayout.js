@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -29,11 +29,13 @@ const QuizLayout = ({ questions, sanity }) => {
     completed: false,
   });
 
+  const [answerStatus, setAnswerStatus] = useState(null);
+
   // *
   // * Handle user answer
   // ** Progress all of our defaults by +1
 
-  function handleUserAnswer(e) {
+  function handleUserAnswer(id) {
     if (window) window.scrollTo(0, 0);
 
     const {
@@ -44,14 +46,23 @@ const QuizLayout = ({ questions, sanity }) => {
     } = quizProgress;
 
     const counter = questionNumber;
-    const isCorrect = parseInt(e.currentTarget.value) === correctAnswer;
+    const isCorrect = parseInt(id) === correctAnswer;
+
+    setAnswerStatus(id);
 
     // * Disable clicking other items before next question
     quizRef.current.style.pointerEvents = 'none';
 
     setTimeout(() => {
+      // * Reset answer status
+      setAnswerStatus(null);
+
+      // * Re-enable clicking
+      quizRef.current.style.pointerEvents = 'all';
+
+      // * Progress the quiz
       if (quizProgress.questionNumber < quizProgress.totalQuestions) {
-        // * Progress the quiz
+        // * Update the score
         setQuizProgress((quiz) => ({
           ...quiz,
           questionNumber: counter + 1,
@@ -61,9 +72,6 @@ const QuizLayout = ({ questions, sanity }) => {
           totalCorrect: isCorrect ? totalCorrect + 1 : totalCorrect,
           totalAnswers: totalAnswers + 1,
         }));
-
-        // * Re-enable clicking
-        quizRef.current.style.pointerEvents = 'all';
       } else {
         // * Output the results
         setQuizProgress((quiz) => ({
@@ -77,29 +85,18 @@ const QuizLayout = ({ questions, sanity }) => {
 
   // *
   // * Current questions answers
-  // ** Answer is correct if index === correctAnswer
+  // ** Answer is correct if id === correctAnswer
 
   const currentQuestions = quizProgress.answers.map((answer, index) => (
     <Answer
+      answerStatus={answerStatus}
       key={index}
       label={answer}
-      correctAnswer={quizProgress.correctAnswer}
+      isCorrectAnswer={index + 1 === quizProgress.correctAnswer}
       id={index + 1}
-      handleUserAnswer={handleUserAnswer}
+      handleUserAnswer={() => handleUserAnswer(index + 1)}
     />
   ));
-
-  // *
-  // * A quick timer
-
-  // setTimeout(
-  //   () =>
-  //     setQuizProgress((quiz) => ({
-  //       ...quiz,
-  //       completed: true,
-  //     })),
-  //   [2000]
-  // );
 
   // *
   // * Return
@@ -124,7 +121,7 @@ const QuizLayout = ({ questions, sanity }) => {
           </div>
         </QuizWrap>
       ) : (
-        <div style={{ pointerEvents: 'all' }}>
+        <div>
           <QuizResults results={quizProgress} sanity={sanity} />
         </div>
       )}

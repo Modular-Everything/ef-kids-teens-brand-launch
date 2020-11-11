@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { camelCase, truncate } from 'lodash';
 import styled from 'styled-components';
@@ -8,7 +8,13 @@ import IncorrectIcon from '../../assets/brand/block-incorrect.svg';
 
 //
 
-const Answer = ({ label, correctAnswer, id, handleUserAnswer }) => {
+const Answer = ({
+  label,
+  id,
+  handleUserAnswer,
+  answerStatus,
+  isCorrectAnswer,
+}) => {
   // *
   // * Set up a unique ID
 
@@ -18,25 +24,17 @@ const Answer = ({ label, correctAnswer, id, handleUserAnswer }) => {
   });
 
   // *
-  // * Handle the users' answer
+  // * Determine correct/incorrect answer icon
 
-  const [userAnswer, setUserAnswer] = useState(null);
-
-  function handleAnswer(e) {
-    handleUserAnswer(e);
-
-    const answerCorrect = parseInt(e.currentTarget.value) === correctAnswer;
-    console.log(answerCorrect);
-
-    if (answerCorrect) {
-      setUserAnswer(true);
-    } else {
-      setUserAnswer(false);
-    }
-
-    setTimeout(() => {
-      setUserAnswer(null);
-    }, [1000]);
+  let radioContent;
+  if (answerStatus === null) {
+    radioContent = null;
+  } else if (isCorrectAnswer) {
+    radioContent = <img src={CorrectIcon} alt="✅" />;
+  } else if (answerStatus !== id) {
+    radioContent = null;
+  } else {
+    radioContent = <img src={IncorrectIcon} alt="❌" />;
   }
 
   // *
@@ -45,10 +43,7 @@ const Answer = ({ label, correctAnswer, id, handleUserAnswer }) => {
   return (
     <AnswerWrap>
       <label htmlFor={labelID}>
-        <Radio>
-          {userAnswer && <img src={CorrectIcon} alt="✅" />}
-          {userAnswer === false && <img src={IncorrectIcon} alt="❌" />}
-        </Radio>
+        <Radio>{radioContent}</Radio>
 
         <span className="question">{label}</span>
 
@@ -59,7 +54,7 @@ const Answer = ({ label, correctAnswer, id, handleUserAnswer }) => {
           checked={false}
           id={labelID}
           value={id}
-          onChange={(e) => handleAnswer(e)}
+          onChange={handleUserAnswer}
         />
       </label>
     </AnswerWrap>
@@ -124,7 +119,12 @@ const Radio = styled.span`
 
 Answer.propTypes = {
   label: PropTypes.string.isRequired,
-  correctAnswer: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   handleUserAnswer: PropTypes.func.isRequired,
+  answerStatus: PropTypes.object,
+  isCorrectAnswer: PropTypes.bool.isRequired,
+};
+
+Answer.defaultProps = {
+  answerStatus: null,
 };
