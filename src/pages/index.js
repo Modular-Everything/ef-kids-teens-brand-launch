@@ -20,7 +20,7 @@ import Footer from '../components/Footer';
 const IndexPage = ({ location }) => (
   <>
     <Layout location={location}>
-      <Video videoData="https://vimeo.com/432893400" type="full" />
+      <Video videoData={sanity.headerVideo.url} type="full" />
 
       <Container spacing={[132, 52]}>
         <SectionIntro
@@ -98,7 +98,7 @@ const IndexPage = ({ location }) => (
           spacing={[0, 80]}
         />
 
-        <Video videoData="https://vimeo.com/432893400" type="card" />
+        <Video videoData={sanity.uniformVideo.url} type="card" />
       </Container>
 
       <AnyQuestionsCTA

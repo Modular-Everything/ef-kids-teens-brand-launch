@@ -115,6 +115,10 @@ export default {
       },
     },
   ],
+  headerVideo: {
+    _key: 's93d93msa0zz',
+    url: 'https://vimeo.com/477086469',
+  },
   quizCta: {
     title: 'Test your Kids & Teens knowledge!',
     paragraph:
@@ -124,11 +128,15 @@ export default {
   talkingHeads: [
     {
       _key: '920132ae95ee',
-      url: 'https://vimeo.com/460944588',
+      url: 'https://vimeo.com/477086469',
       captionTitle: 'Jacob Toren',
       captionCopy: 'CEO, EF Education First, China',
     },
   ],
+  uniformVideo: {
+    _key: '402kd02ks03a',
+    url: 'https://vimeo.com/477110732',
+  },
   openingCopy: {
     title: 'Welcome to the all new Kids & Teens  brand identity!',
     paragraph:
