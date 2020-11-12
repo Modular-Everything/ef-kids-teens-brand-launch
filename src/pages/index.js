@@ -31,7 +31,11 @@ const IndexPage = ({ location, data }) => {
   return (
     <>
       <Layout location={location}>
-        <Video videoData={sanity.video.url} type="full" />
+        <Video
+          videoData={sanity.video.url}
+          type="full"
+          placeholderVideo={sanity.video.videoPlaceholder}
+        />
 
         <Container spacing={[132, 52]}>
           <SectionIntro
@@ -118,7 +122,13 @@ const IndexPage = ({ location, data }) => {
             spacing={[0, 80]}
           />
 
-          <Video videoData={sanity.uniformInfo.uniformVideo.url} type="card" />
+          <Video
+            videoData={sanity.uniformInfo.uniformVideo.url}
+            type="card"
+            placeholderImg={
+              sanity.uniformInfo.uniformVideo.imgPlaceholder.asset.url
+            }
+          />
         </Container>
 
         <AnyQuestionsCTA
@@ -142,6 +152,14 @@ export const query = graphql`
       # Header video
       video {
         url
+        videoPlaceholder
+        imgPlaceholder {
+          asset {
+            fluid(maxWidth: 1920) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
       }
       # Guidelines
       guidelinesCta {
@@ -217,6 +235,12 @@ export const query = graphql`
       uniformInfo {
         uniformVideo {
           url
+          videoPlaceholder
+          imgPlaceholder {
+            asset {
+              url
+            }
+          }
         }
       }
       # SectionIntro Copy

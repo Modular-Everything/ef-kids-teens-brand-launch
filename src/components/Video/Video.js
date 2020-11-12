@@ -1,16 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactPlayer from 'react-player/vimeo';
 
 import PlayIcon from '../../assets/icons/play.svg';
-import FullWidthBg from '../../assets/images/videoPlaceholder.png';
 import useSpace from '../../hooks/useSpace';
 
 //
 
-const PlayButton = () => (
-  <Play type="button">
+const PlayButton = ({ onClick }) => (
+  <Play type="button" onClick={onClick}>
     <img src={PlayIcon} alt="Play" />
   </Play>
 );
@@ -26,12 +25,27 @@ const Caption = ({ title, copy }) => (
 
 //
 
-const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
+const Video = ({
+  videoData,
+  type,
+  captionTitle,
+  captionCopy,
+  spacing,
+  placeholderVideo,
+  placeholderImg,
+}) => {
+  // *
   // * Define refs
 
   const VideoRef = useRef(null);
   const aspectRatio = useRef(0);
 
+  // *
+  // * Playing state
+
+  const [playing, setPlaying] = useState(false);
+
+  // *
   // * Get the aspect ratio of the video
 
   function getRatio() {
@@ -45,32 +59,60 @@ const Video = ({ videoData, type, captionTitle, captionCopy, spacing }) => {
     VideoRef.current.wrapper.parentNode.style.paddingBottom = `${aspectRatio.current}%`;
   }
 
+  // *
   // * Does it have a caption?
 
   const hasCaption = captionTitle || captionCopy;
 
+  // *
   // * Return player
 
   return (
-    <article style={useSpace(spacing)}>
-      <FullWidthVideo type={type}>
-        <ReactPlayer
-          url={videoData}
-          ref={VideoRef}
-          width="100%"
-          height="100%"
-          light={FullWidthBg}
-          playIcon={<PlayButton />}
-          playing
-          controls
-          onReady={() => getRatio()}
-        />
-      </FullWidthVideo>
+    <VideoWrap
+      style={useSpace(spacing)}
+      isPlaceholder={placeholderVideo && !playing && 'placeholder'}
+    >
+      {!playing && placeholderVideo && (
+        <>
+          <PlayButton onClick={() => setPlaying(true)} />
+          <FullWidthVideo type="placeholder">
+            <ReactPlayer
+              className="videoPlaceholder"
+              url={placeholderVideo}
+              width="100%"
+              height="100%"
+              playing
+              controls={false}
+              ref={VideoRef}
+              volume={0}
+              loop
+              muted
+              onReady={() => getRatio()}
+            />
+          </FullWidthVideo>
+        </>
+      )}
+
+      {(playing || placeholderImg) && (
+        <FullWidthVideo type={type}>
+          <ReactPlayer
+            url={videoData}
+            ref={VideoRef}
+            width="100%"
+            height="100%"
+            playIcon={<PlayButton />}
+            light={placeholderImg || null}
+            playing={placeholderVideo}
+            controls
+            onReady={() => getRatio()}
+          />
+        </FullWidthVideo>
+      )}
 
       {type === 'card' && hasCaption && (
         <Caption title={captionTitle} copy={captionCopy} />
       )}
-    </article>
+    </VideoWrap>
   );
 };
 
@@ -78,7 +120,27 @@ export default Video;
 
 //
 
+const VideoWrap = styled.section`
+  position: relative;
+
+  ${(props) =>
+    props.isPlaceholder === 'placeholder' &&
+    `
+    height: auto;
+    padding-bottom: 56%;
+    overflow: hidden;
+    
+      @media (min-width: 1060px) {
+        height: 600px;
+      }
+  `}
+`;
+
 const Play = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
   width: 3.5rem;
   height: 3.5rem;
   background: none;
@@ -86,6 +148,7 @@ const Play = styled.button`
   border: none;
   border-radius: 9rem;
   box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
+  transform: translateX(-50%) translateY(-50%);
   cursor: pointer;
 
   @media (min-width: 960px) {
@@ -120,6 +183,7 @@ const FullWidthVideo = styled.div`
   position: relative;
   padding-bottom: 50%;
   overflow: hidden;
+  border-bottom: 1px solid #efefef;
 
   & .react-player__preview {
     transition: all ease-in-out 150ms;
@@ -137,7 +201,7 @@ const FullWidthVideo = styled.div`
       padding-bottom: 100%;
 
       @media (min-width: 480px) {
-        padding-bottom: 50%;
+        padding-bottom: 56%;
       }
   `}
 
@@ -165,6 +229,8 @@ Video.propTypes = {
   captionTitle: PropTypes.string,
   captionCopy: PropTypes.string,
   spacing: PropTypes.array,
+  placeholderVideo: PropTypes.string,
+  placeholderImg: PropTypes.object,
 };
 
 Video.defaultProps = {
@@ -172,9 +238,19 @@ Video.defaultProps = {
   captionTitle: null,
   captionCopy: null,
   spacing: [0, 0],
+  placeholderVideo: null,
+  placeholderImg: null,
 };
 
 Caption.propTypes = {
   title: PropTypes.string.isRequired,
   copy: PropTypes.string.isRequired,
+};
+
+PlayButton.propTypes = {
+  onClick: PropTypes.func,
+};
+
+PlayButton.defaultProps = {
+  onClick: null,
 };
