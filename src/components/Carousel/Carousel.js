@@ -22,7 +22,7 @@ const Carousel = ({ slides }) => (
     slideToClickedSlide
   >
     {slides.map((slide) => (
-      <SwiperSlide>
+      <SwiperSlide key={slide._key}>
         <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
       </SwiperSlide>
     ))}
@@ -63,5 +63,5 @@ const CarouselWrap = styled(Swiper)`
 //
 
 Carousel.propTypes = {
-  slides: PropTypes.object.isRequired,
+  slides: PropTypes.array.isRequired,
 };
