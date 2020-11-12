@@ -14,6 +14,7 @@ import Video from '../components/Video';
 import CardGrid from '../components/CardGrid';
 import BrandedCTA from '../components/BrandedCTA';
 import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
+import Carosuel from '../components/Carousel';
 import Footer from '../components/Footer';
 
 //
@@ -23,7 +24,9 @@ const IndexPage = ({ location, data }) => {
   // * Set up sanity
 
   const sanity = data.sanityPage;
-  console.log(sanity);
+
+  // *
+  // * Return
 
   return (
     <>
@@ -41,7 +44,7 @@ const IndexPage = ({ location, data }) => {
 
         <RevealMore label="Show me more" spacing={[80, 132]} />
 
-        <Container>
+        <Container spacing={[0, 132]}>
           <SectionIntro
             title={sanity.talkingHeadsCopy.title}
             copy={sanity.talkingHeadsCopy.paragraph}
@@ -70,15 +73,6 @@ const IndexPage = ({ location, data }) => {
           )}
         </Container>
 
-        <Container spacing={[180, 180]}>
-          <BrandedCTA
-            title={sanity.quizCta.title}
-            copy={sanity.quizCta.paragraph}
-            ctaLabel={sanity.quizCta.buttonLabel}
-            ctaLink="/quiz"
-          />
-        </Container>
-
         <Container>
           <SectionIntro
             title={sanity.timelineCopy.title}
@@ -89,7 +83,27 @@ const IndexPage = ({ location, data }) => {
 
         <Timeline data={sanity.timeline} />
 
+        <Container spacing={[180, 180]}>
+          <BrandedCTA
+            title={sanity.quizCta.title}
+            copy={sanity.quizCta.paragraph}
+            ctaLabel={sanity.quizCta.buttonLabel}
+            ctaLink="/quiz"
+          />
+        </Container>
+
+        <Container>
+          <center>Carosuel Placeholder</center>
+        </Container>
+
         <Container spacing={[110, 140]}>
+          <SectionIntro
+            title={sanity.talkingHeadsCopy.title}
+            copy={sanity.talkingHeadsCopy.paragraph}
+            small
+            spacing={[0, 132]}
+          />
+
           <LandscapeCard
             image={sanity.guidelinesCta.ctaImage.asset}
             title={sanity.guidelinesCta.ctaCopy.title}
@@ -126,7 +140,7 @@ export default IndexPage;
 
 export const query = graphql`
   query LandingQuery {
-    sanityPage(_id: { eq: "homepage" }) {
+    sanityPage(_id: { regex: "/(homepage)/g" }) {
       # Header video
       video {
         url
@@ -176,6 +190,15 @@ export const query = graphql`
           year
           paragraph
           paragraphTitle
+        }
+      }
+      # School Sites
+      schoolSites {
+        _key
+        asset {
+          fluid {
+            sizes
+          }
         }
       }
       # Quiz CTA
