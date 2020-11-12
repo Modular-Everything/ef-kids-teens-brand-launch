@@ -100,6 +100,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
           </select>
 
           <textarea
+            name="message"
             placeholder="Write your message here"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
