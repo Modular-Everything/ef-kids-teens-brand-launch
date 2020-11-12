@@ -56,26 +56,6 @@ const IndexPage = ({ location, data }) => {
             spacing={[0, 64]}
           />
 
-          {/* 
-          
-                  talkingHeads {
-                    _key
-                    _type
-                    captionTitle
-                    captionCopy
-                    url {
-                      url
-                      imgPlaceholder {
-                        asset {
-                          url
-                        }
-                      }
-                      videoPlaceholder
-                    }
-                  }
-          
-          */}
-
           {sanity.talkingHeads.length > 1 ? (
             <CardGrid hasCaption>
               {sanity.talkingHeads.map((head) => (
