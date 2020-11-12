@@ -12,26 +12,22 @@ SwiperCore.use([Navigation, Pagination]);
 
 //
 
-const Carousel = ({ slides }) => {
-  console.log(slides);
-
-  return (
-    <CarouselWrap
-      spaceBetween={30}
-      slidesPerView={1}
-      slidesPerGroup={1}
-      pagination={{ clickable: true }}
-      centeredSlides
-      slideToClickedSlide
-    >
-      {slides.map((slide) => (
-        <SwiperSlide>
-          <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
-        </SwiperSlide>
-      ))}
-    </CarouselWrap>
-  );
-};
+const Carousel = ({ slides }) => (
+  <CarouselWrap
+    spaceBetween={30}
+    slidesPerView={1}
+    slidesPerGroup={1}
+    pagination={{ clickable: true }}
+    centeredSlides
+    slideToClickedSlide
+  >
+    {slides.map((slide) => (
+      <SwiperSlide>
+        <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
+      </SwiperSlide>
+    ))}
+  </CarouselWrap>
+);
 
 export default Carousel;
 
