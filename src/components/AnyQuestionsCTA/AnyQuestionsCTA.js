@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -15,7 +15,20 @@ import Arrow from '../../assets/icons/chevron-down.svg';
 
 const AnyQuestionsCTA = ({ title, copy, spacing }) => {
   // *
-  // * Set our form state
+  // * Has our form been sent yet?
+
+  const [sent, setSent] = useState(false);
+
+  // *
+  // * Handle sending
+
+  const formRef = useRef(null);
+  function handleSend() {
+    formRef.current.submit();
+  }
+
+  // *
+  // * Set form info
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,7 +45,14 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
         <Title>{title}</Title>
         <Paragraph>{copy}</Paragraph>
 
-        <Form>
+        <Form
+          ref={formRef}
+          name="Questions CTA"
+          method="POST"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="Questions CTA" />
+
           <input
             type="text"
             name="name"
@@ -40,6 +60,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            disabled={sent}
           />
 
           <input
@@ -49,6 +70,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={sent}
           />
 
           <input
@@ -57,6 +79,8 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             placeholder="Job Title"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
+            required
+            disabled={sent}
           />
 
           <select
@@ -65,6 +89,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             value={queryType}
             onChange={(e) => setQueryType(e.target.value)}
             required
+            disabled={sent}
             style={{ color: queryType !== 'placeholder' && '#191919' }}
           >
             <option value="placeholder" disabled hidden>
@@ -79,10 +104,15 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
+            disabled={sent}
           />
 
           <ButtonWrap>
-            <Button label="Submit" form={() => console.log('pressed')} />
+            {!sent ? (
+              <Button label="Submit" form={(e) => handleSend(e)} />
+            ) : (
+              <Thanks>Thanks &mdash; help is on the way!</Thanks>
+            )}
           </ButtonWrap>
         </Form>
       </FormWrap>
@@ -123,6 +153,10 @@ const Form = styled.form`
 
     @media (max-width: 640px) {
       width: 100%;
+    }
+
+    &:disabled {
+      opacity: 0.35;
     }
 
     &::placeholder {
@@ -177,6 +211,12 @@ const Paragraph = styled.p`
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.5rem;
+`;
+
+const Thanks = styled.p`
+  margin: 0 0 1.5rem;
+  color: var(--ef-kids-blue);
+  font-size: 0.875rem;
 `;
 
 const BrandIcons = styled.div`
