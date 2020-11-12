@@ -14,7 +14,7 @@ import Video from '../components/Video';
 import CardGrid from '../components/CardGrid';
 import BrandedCTA from '../components/BrandedCTA';
 import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
-import Carosuel from '../components/Carousel';
+import Carousel from '../components/Carousel';
 import Footer from '../components/Footer';
 
 //
@@ -92,9 +92,7 @@ const IndexPage = ({ location, data }) => {
           />
         </Container>
 
-        <Container>
-          <center>Carosuel Placeholder</center>
-        </Container>
+        <Carousel slides={sanity.schoolSites} />
 
         <Container spacing={[110, 140]}>
           <SectionIntro
@@ -140,7 +138,7 @@ export default IndexPage;
 
 export const query = graphql`
   query LandingQuery {
-    sanityPage(_id: { regex: "/(homepage)/g" }) {
+    sanityPage(_id: { regex: "/(drafts.|)homepage/" }) {
       # Header video
       video {
         url
@@ -196,9 +194,10 @@ export const query = graphql`
       schoolSites {
         _key
         asset {
-          fluid {
-            sizes
+          fluid(maxWidth: 1920) {
+            ...GatsbySanityImageFluid
           }
+          title
         }
       }
       # Quiz CTA
