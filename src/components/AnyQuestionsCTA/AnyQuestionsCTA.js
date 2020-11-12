@@ -144,8 +144,8 @@ const Form = styled.form`
 
 const ButtonWrap = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   width: calc(50% - 1.5rem);
   margin: 0.75rem;
 
