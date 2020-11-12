@@ -56,6 +56,26 @@ const IndexPage = ({ location, data }) => {
             spacing={[0, 64]}
           />
 
+          {/* 
+          
+                  talkingHeads {
+                    _key
+                    _type
+                    captionTitle
+                    captionCopy
+                    url {
+                      url
+                      imgPlaceholder {
+                        asset {
+                          url
+                        }
+                      }
+                      videoPlaceholder
+                    }
+                  }
+          
+          */}
+
           {sanity.talkingHeads.length > 1 ? (
             <CardGrid hasCaption>
               {sanity.talkingHeads.map((head) => (
@@ -69,10 +89,13 @@ const IndexPage = ({ location, data }) => {
             </CardGrid>
           ) : (
             <Video
-              videoData={sanity.talkingHeads[0].url}
+              videoData={sanity.talkingHeads[0].url.url}
               type="card"
               captionTitle={sanity.talkingHeads[0].captionTitle}
               captionCopy={sanity.talkingHeads[0].captionCopy}
+              placeholderImg={
+                sanity.talkingHeads[0].url.imgPlaceholder.asset.url
+              }
             />
           )}
         </Container>
@@ -227,9 +250,18 @@ export const query = graphql`
       # Talking Head(s)
       talkingHeads {
         _key
-        url
+        _type
         captionTitle
         captionCopy
+        url {
+          url
+          imgPlaceholder {
+            asset {
+              url
+            }
+          }
+          videoPlaceholder
+        }
       }
       # Uniform Video
       uniformInfo {
