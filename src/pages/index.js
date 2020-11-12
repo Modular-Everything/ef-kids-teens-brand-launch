@@ -83,7 +83,7 @@ const IndexPage = ({ location, data }) => {
 
         <Timeline data={sanity.timeline} />
 
-        <Container spacing={[180, 180]}>
+        <Container spacing={[180, 200]}>
           <BrandedCTA
             title={sanity.quizCta.title}
             copy={sanity.quizCta.paragraph}

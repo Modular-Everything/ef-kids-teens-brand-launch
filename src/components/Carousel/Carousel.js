@@ -43,6 +43,24 @@ const CarouselWrap = styled(Swiper)`
 
   & .swiper-pagination {
     position: static;
+    margin-top: 0.5rem;
+
+    & .swiper-pagination-bullet {
+      flex: 0 0 auto;
+      width: 4px;
+      height: 4px;
+      margin: 0 5px;
+      background: var(--ef-black);
+      border-radius: 2px;
+      opacity: 1;
+      transition: width 0.2s ease;
+    }
+
+    & .swiper-pagination-bullet-active {
+      width: 1.125rem;
+    }
+
+    /* .ef-carousel__pagination .swiper-pagination-bullet.swiper-pagination-bullet-active */
   }
 `;
 
