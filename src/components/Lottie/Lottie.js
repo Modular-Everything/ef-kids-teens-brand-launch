@@ -32,7 +32,7 @@ export default LottieAnim;
 
 const LottieWrap = styled.section`
   & svg {
-    transform: translate3d(-20vw, 0px, 0px) !important;
+    transform: translate3d(-12vw, 0px, 0px) !important;
   }
 `;
 
