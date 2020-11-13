@@ -53,7 +53,10 @@ const QuizResults = ({ results }) => {
 
   return (
     <section>
-      <Confetti colors={['#ff329b', '#f28529', '#6ad300', '#009eeb']} />
+      {percentCorrect === 100 && (
+        <Confetti colors={['#ff329b', '#f28529', '#6ad300', '#009eeb']} />
+      )}
+
       <ResultsWrap spacing={[80, 80]}>
         <Title className="title">
           <h2>
