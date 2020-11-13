@@ -20,7 +20,6 @@ const Scene = () => {
       Render,
       World,
       Bodies,
-      Body,
       Common,
       Mouse,
       Composites,
@@ -58,12 +57,12 @@ const Scene = () => {
     const stack = Composites.stack(
       percentX(25),
       percentY(5),
-      5,
-      5,
-      25,
-      25,
+      window.innerWidth > 1000 ? 5 : 3,
+      window.innerWidth > 1000 ? 5 : 3,
+      window.innerWidth > 1000 ? 25 : 15,
+      window.innerWidth > 1000 ? 25 : 15,
       function (x, y) {
-        const scale = 0.75;
+        const scale = window.innerWidth > 1000 ? 0.75 : 0.5;
         const Blocks = Bodies.rectangle(x, y, 200 * scale, 200 * scale, {
           restitution: 0.75,
           friction: 0.65,
@@ -86,8 +85,10 @@ const Scene = () => {
     );
 
     stack.bodies[3].angle = -0.05;
-    stack.bodies[12].angle = 0.05;
-    stack.bodies[20].angle = -0.05;
+    if (window.innerWidth > 1000) {
+      stack.bodies[12].angle = 0.05;
+      stack.bodies[20].angle = -0.05;
+    }
 
     World.add(engine.world, stack);
 
