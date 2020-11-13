@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import Matter, { Body } from 'matter-js';
+import React, { useState, useEffect, useRef } from 'react';
+import Matter from 'matter-js';
+import styled from 'styled-components';
 
+import Button from '../Button';
 import BlockBlue from '../../assets/brand/block-blue.svg';
 import BlockPink from '../../assets/brand/block-pink.svg';
 import BlockOrange from '../../assets/brand/block-orange.svg';
@@ -9,6 +11,15 @@ import BlockGreen from '../../assets/brand/block-green.svg';
 //
 
 const Scene = () => {
+  // *
+  // * Set up state
+
+  const [message, setMessage] = useState(true);
+  const [timer, setTimer] = useState(5);
+
+  // *
+  // * Reference the target div
+
   const target = useRef(null);
 
   useEffect(() => {
@@ -144,9 +155,75 @@ const Scene = () => {
 
     Engine.run(engine);
     Render.run(render);
-  });
+  }, []);
 
-  return <div ref={target} />;
+  setInterval(() => {
+    if (timer > 0) {
+      setTimer(timer - 1);
+    } else {
+      setMessage(false);
+    }
+  }, 1000);
+
+  return (
+    <section style={{ position: 'relative' }}>
+      {message && (
+        <>
+          <Message>
+            <p>Click and drag on blocks to move them around... have fun!</p>
+            <div className="button">
+              <Button
+                label={`Got it (${timer})`}
+                form={() => setMessage(false)}
+              />
+            </div>
+          </Message>
+          <Skrim />
+        </>
+      )}
+
+      <div ref={target} />
+    </section>
+  );
 };
 
 export default Scene;
+
+//
+
+const Skrim = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.75);
+`;
+
+const Message = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
+  transform: translateX(-50%) translateY(-50%);
+
+  & p {
+    width: 70%;
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.5rem;
+  }
+
+  & .button {
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
+  }
+`;
