@@ -14,6 +14,7 @@ html {
 body {
   overflow-x: hidden;
   font-family: var(--font-stack);
+  background-color: #fff;
 }
 
 button, input, select, option, textarea {
