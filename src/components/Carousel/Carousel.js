@@ -27,7 +27,6 @@ const Carousel = ({ slides }) => (
       navigation={{
         prevEl: '.carousel__leftArrow',
         nextEl: '.carousel__rightArrow',
-        hiddenClass: 'hidden',
       }}
       centeredSlides
       loop
@@ -54,6 +53,10 @@ const CarouselWrap = styled.section`
     top: 50%;
     z-index: 10;
     transform: translateY(-50%);
+
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 
   & .carousel__rightArrow {
