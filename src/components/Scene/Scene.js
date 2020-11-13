@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Matter from 'matter-js';
+import Matter, { Body } from 'matter-js';
 
 import BlockBlue from '../../assets/brand/block-blue.svg';
 import BlockPink from '../../assets/brand/block-pink.svg';
@@ -20,6 +20,7 @@ const Scene = () => {
       Render,
       World,
       Bodies,
+      Body,
       Common,
       Mouse,
       Composites,
@@ -56,13 +57,13 @@ const Scene = () => {
 
     const stack = Composites.stack(
       percentX(25),
-      percentY(25),
+      percentY(5),
       5,
       5,
       25,
       25,
       function (x, y) {
-        const scale = Common.random(0.5, 0.75);
+        const scale = 0.75;
         const Blocks = Bodies.rectangle(x, y, 200 * scale, 200 * scale, {
           restitution: 0.75,
           friction: 0.65,
@@ -83,6 +84,10 @@ const Scene = () => {
         return Blocks;
       }
     );
+
+    stack.bodies[3].angle = -0.05;
+    stack.bodies[12].angle = 0.05;
+    stack.bodies[20].angle = -0.05;
 
     World.add(engine.world, stack);
 
