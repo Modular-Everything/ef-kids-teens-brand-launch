@@ -19,7 +19,7 @@ const Layout = ({ children, location, title }) => {
   `);
 
   const siteTitle = siteMeta.site.siteMetadata.title;
-  const pageTitle = `${title} | ${siteTitle}` || siteTitle;
+  const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
 
   return (
     <>
