@@ -19,7 +19,7 @@ const Carousel = ({ slides }) => (
     <Arrow className="carousel__arrow carousel__leftArrow" />
     <Arrow className="carousel__arrow carousel__rightArrow" />
 
-    <Slider
+    <SwiperWrap
       spaceBetween={30}
       slidesPerView={1}
       slidesPerGroup={1}
@@ -38,7 +38,7 @@ const Carousel = ({ slides }) => (
           <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
         </SwiperSlide>
       ))}
-    </Slider>
+    </SwiperWrap>
   </CarouselWrap>
 );
 
@@ -66,7 +66,7 @@ const CarouselWrap = styled.section`
   }
 `;
 
-const Slider = styled(Swiper)`
+const SwiperWrap = styled(Swiper)`
   display: flex;
   flex-direction: column-reverse;
 
