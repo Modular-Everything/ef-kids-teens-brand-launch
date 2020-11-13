@@ -18,14 +18,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
   // * Has our form been sent yet?
 
   const [sent, setSent] = useState(false);
-
-  // *
-  // * Handle sending
-
-  const formRef = useRef(null);
-  function handleSend() {
-    formRef.current.submit();
-  }
+  const [error, setError] = useState(false);
 
   // *
   // * Set form info
@@ -35,6 +28,42 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
   const [jobTitle, setJobTitle] = useState('');
   const [queryType, setQueryType] = useState('placeholder');
   const [message, setMessage] = useState('');
+
+  // *
+  // * Handle sending
+
+  const formRef = useRef(null);
+
+  async function handleSend(e) {
+    e.preventDefault();
+
+    if (formRef.current.checkValidity()) {
+      setError(false);
+
+      const formElements = [...formRef.current.elements];
+      const validElements = formElements
+        .filter((el) => !!el.value)
+        .map(
+          (el) =>
+            `${encodeURIComponent(el.name)}=${encodeURIComponent(el.value)}`
+        )
+        .join('&');
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: validElements,
+      })
+        .then(() => {
+          setSent(true);
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    } else {
+      setError('Please fill out all required fields correctly');
+    }
+  }
 
   // *
   // * Return
@@ -109,10 +138,15 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
           />
 
           <ButtonWrap>
-            {!sent ? (
-              <Button label="Submit" form={(e) => handleSend(e)} />
-            ) : (
-              <Thanks>Thanks &mdash; help is on the way!</Thanks>
+            {error && (
+              <Error>
+                <p>{error}</p>
+              </Error>
+            )}
+
+            {!sent && <Button label="Submit" form={(e) => handleSend(e)} />}
+            {sent && (
+              <SentMessage>Thanks &mdash; help is on the way!</SentMessage>
             )}
           </ButtonWrap>
         </Form>
@@ -214,7 +248,22 @@ const Paragraph = styled.p`
   line-height: 1.5rem;
 `;
 
-const Thanks = styled.p`
+const Error = styled.span`
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 55%;
+  margin-top: 1.5rem;
+
+  & p {
+    margin: 0 1rem 0.25rem 0;
+    color: var(--ef-kids-orange) !important;
+    font-size: 0.875rem !important;
+    text-align: right;
+  }
+`;
+
+const SentMessage = styled.p`
   margin: 0 0 1.5rem;
   color: var(--ef-kids-blue);
   font-size: 0.875rem;
