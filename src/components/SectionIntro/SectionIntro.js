@@ -81,6 +81,7 @@ const Paragraph = styled.div`
     font-weight: 300;
     font-size: 1rem;
     line-height: 1.5rem;
+    white-space: pre-line;
   }
 `;
 
