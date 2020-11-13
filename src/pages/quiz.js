@@ -34,7 +34,7 @@ const QuizPage = ({ location, data }) => {
   // * Return quiz
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title="Quiz">
       <form data-netlify="true" name="Quiz Submit">
         <input type="hidden" name="form-name" value="Quiz Submit" />
         <input type="hidden" name="winnerName" />
