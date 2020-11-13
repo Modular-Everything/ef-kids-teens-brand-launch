@@ -9,6 +9,7 @@ import Container from '../Container';
 import ProgressLine from './ProgressLine';
 import Card from './Card';
 import ImageCard from './ImageCard';
+import Arrow from '../Carousel/Arrow';
 
 //
 
@@ -24,6 +25,7 @@ const Timeline = ({ data }) => {
   const [horizontalPosition, setHorizontalPosition] = useState(0);
   const [lineWidth, setLineWidth] = useState(0);
   const [sizesGrid, setSizesGrid] = useState([]);
+  const [progress, setProgress] = useState(0);
 
   // * Set references
 
@@ -58,51 +60,79 @@ const Timeline = ({ data }) => {
 
     // 5. create state of sizes
     setSizesGrid(swiper.slidesGrid);
+
+    // Whilst we're here, check if the swiper is at the start or the end
+    if (swiper.isBeginning) {
+      setProgress(0);
+    } else if (swiper.isEnd) {
+      setProgress(1);
+    } else {
+      setProgress(0.5);
+    }
+
+    console.log(swiper);
   }
 
   // * Render it
 
   return (
     <Container>
-      <CardContainer
-        slidesPerView="auto"
-        spaceBetween={24}
-        onSwiper={(swiper) => handleTranslate(swiper)}
-        onSetTranslate={(swiper) => handleTranslate(swiper)}
-        onResize={(swiper) => handleTranslate(swiper)}
-        watchSlidesVisibility
-      >
-        {data.map((node, index) => {
-          const cardType = node._type;
+      <CardContainer>
+        <Arrow
+          className={`carousel__arrow carousel__leftArrow ${
+            progress === 0 && `disabled`
+          }`}
+        />
+        <Arrow
+          className={`carousel__arrow carousel__rightArrow ${
+            progress === 1 && `disabled`
+          }`}
+        />
 
-          if (cardType === 'imageCard') {
+        <SwiperWrap
+          slidesPerView="auto"
+          spaceBetween={24}
+          onSwiper={(swiper) => handleTranslate(swiper)}
+          onSetTranslate={(swiper) => handleTranslate(swiper)}
+          onResize={(swiper) => handleTranslate(swiper)}
+          watchSlidesVisibility
+          navigation={{
+            prevEl: '.carousel__leftArrow',
+            nextEl: '.carousel__rightArrow',
+          }}
+        >
+          {data.map((node, index) => {
+            const cardType = node._type;
+
+            if (cardType === 'imageCard') {
+              return (
+                <SwiperSlide className="card__singleCard" key={node._key}>
+                  <ImageCard
+                    id={index}
+                    title={node.imageTitle}
+                    img={node.bgImage.asset}
+                    marker={MARKER_REF}
+                    dot={DOT_REF}
+                    year={node.year}
+                  />
+                </SwiperSlide>
+              );
+            }
+
             return (
-              <SwiperSlide className="card__singleCard" key={node._key}>
-                <ImageCard
+              <SwiperSlide className={`card__${cardType}`} key={node._key}>
+                <Card
                   id={index}
-                  title={node.imageTitle}
-                  img={node.bgImage.asset}
+                  title={node.paragraphTitle}
+                  copy={node.paragraph}
                   marker={MARKER_REF}
                   dot={DOT_REF}
                   year={node.year}
                 />
               </SwiperSlide>
             );
-          }
-
-          return (
-            <SwiperSlide className={`card__${cardType}`} key={node._key}>
-              <Card
-                id={index}
-                title={node.paragraphTitle}
-                copy={node.paragraph}
-                marker={MARKER_REF}
-                dot={DOT_REF}
-                year={node.year}
-              />
-            </SwiperSlide>
-          );
-        })}
+          })}
+        </SwiperWrap>
       </CardContainer>
 
       <ProgressLine
@@ -120,7 +150,39 @@ export default Timeline;
 
 //
 
-const CardContainer = styled(Swiper)`
+const CardContainer = styled.section`
+  position: relative;
+
+  & .carousel__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+
+    &.disabled {
+      cursor: not-allowed;
+
+      & img {
+        opacity: 0.2;
+      }
+    }
+
+    @media (max-width: 690px) {
+      display: none;
+    }
+  }
+
+  & .carousel__rightArrow {
+    right: -1.5rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  & .carousel__leftArrow {
+    left: -1.5rem;
+  }
+`;
+
+const SwiperWrap = styled(Swiper)`
   margin-bottom: 7.75rem;
   overflow: visible;
 
@@ -148,13 +210,13 @@ const CardContainer = styled(Swiper)`
     width: 90%;
 
     @media (min-width: 30rem) {
-      width: 15rem;
+      width: 14rem;
     }
   }
 
   & .card__doubleCard {
     width: 90%;
-    max-width: 30rem;
+    max-width: 27rem;
   }
 `;
 

@@ -30,7 +30,7 @@ export default Card;
 const CardWrap = styled.div`
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 2.5rem;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -45,6 +45,7 @@ const CardWrap = styled.div`
   }
 
   & p {
+    margin: 1rem 0 0 0;
     color: var(--ef-black);
     font-weight: 300;
     font-size: 1rem;
