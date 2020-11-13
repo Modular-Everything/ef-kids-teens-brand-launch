@@ -35,6 +35,13 @@ const QuizPage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
+      <form data-netlify="true" name="Quiz Submit">
+        <input type="hidden" name="form-name" value="Quiz Submit" />
+        <input type="hidden" name="winnerName" />
+        <input type="hidden" name="winnerEmail" />
+        <input type="hidden" name="timeTaken" />
+      </form>
+
       {activePage === 0 && (
         <StartLayout page={handlePageChange} sanity={sanity} />
       )}

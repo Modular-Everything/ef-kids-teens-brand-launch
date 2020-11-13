@@ -15,7 +15,7 @@ const QuizResults = ({ results }) => {
   // *
   // * Figure out a percentage of correct answers
 
-  const { totalCorrect, totalQuestions } = results;
+  const { totalCorrect, totalQuestions, timeTaken } = results;
   const percentCorrect = Math.floor((totalCorrect / totalQuestions) * 100);
 
   // *
@@ -100,6 +100,7 @@ const QuizResults = ({ results }) => {
                 required
                 disabled={sent}
               />
+              <input type="hidden" name="timeTaken" value={90 - timeTaken} />
               <input type="hidden" name="form-name" value="Quiz Submit" />
               <Button label="Submit" form={(e) => handleSend(e)} />
             </Form>

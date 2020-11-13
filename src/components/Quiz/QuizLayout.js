@@ -84,6 +84,7 @@ const QuizLayout = ({ questions, sanity }) => {
           ...quiz,
           totalCorrect: isCorrect ? totalCorrect + 1 : totalCorrect,
           completed: true,
+          timeTaken: timeRemaining,
         }));
       }
     }, [1000]);
@@ -115,7 +116,7 @@ const QuizLayout = ({ questions, sanity }) => {
         completed: true,
       }));
     }
-  }, [timeRemaining, setQuizProgress]);
+  }, [timeRemaining, setQuizProgress, quizProgress]);
 
   // *
   // * Return
