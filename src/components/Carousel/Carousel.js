@@ -6,6 +6,8 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
+import Arrow from './Arrow';
+
 //
 
 SwiperCore.use([Navigation, Pagination]);
@@ -13,19 +15,30 @@ SwiperCore.use([Navigation, Pagination]);
 //
 
 const Carousel = ({ slides }) => (
-  <CarouselWrap
-    spaceBetween={30}
-    slidesPerView={1}
-    slidesPerGroup={1}
-    pagination={{ clickable: true }}
-    centeredSlides
-    slideToClickedSlide
-  >
-    {slides.map((slide) => (
-      <SwiperSlide key={slide._key}>
-        <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
-      </SwiperSlide>
-    ))}
+  <CarouselWrap>
+    <Arrow className="carousel__arrow carousel__leftArrow" />
+    <Arrow className="carousel__arrow carousel__rightArrow" />
+
+    <Slider
+      spaceBetween={30}
+      slidesPerView={1}
+      slidesPerGroup={1}
+      pagination={{ clickable: true }}
+      navigation={{
+        prevEl: '.carousel__leftArrow',
+        nextEl: '.carousel__rightArrow',
+        hiddenClass: 'hidden',
+      }}
+      centeredSlides
+      loop
+      slideToClickedSlide
+    >
+      {slides.map((slide) => (
+        <SwiperSlide key={slide._key}>
+          <Img fluid={slide.asset.fluid} alt={slide.asset.title} />
+        </SwiperSlide>
+      ))}
+    </Slider>
   </CarouselWrap>
 );
 
@@ -33,7 +46,27 @@ export default Carousel;
 
 //
 
-const CarouselWrap = styled(Swiper)`
+const CarouselWrap = styled.section`
+  position: relative;
+
+  & .carousel__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+  }
+
+  & .carousel__rightArrow {
+    right: 2rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  & .carousel__leftArrow {
+    left: 2rem;
+  }
+`;
+
+const Slider = styled(Swiper)`
   display: flex;
   flex-direction: column-reverse;
 
