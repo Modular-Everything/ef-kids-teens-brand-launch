@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </a>
 
-        <article className="iconWrap">
+        <a href="tel:900101500" className="iconWrap">
           <span
             className="icon"
             style={{ backgroundColor: 'var(--ef-kids-green)' }}
@@ -61,7 +61,7 @@ const Footer = () => {
             <span className="heading">Call HQ</span>
             <span className="copy">900 101 500</span>
           </div>
-        </article>
+        </a>
 
         <button
           type="button"
