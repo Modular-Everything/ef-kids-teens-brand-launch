@@ -36,10 +36,19 @@ const QuizResults = ({ results }) => {
   // * Handle sending
 
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
   const formRef = useRef(null);
-  function handleSend() {
-    formRef.current.submit();
+  function handleSend(e) {
+    // formRef.current.submit();
+    e.preventDefault();
+
+    if (formRef.current.checkValidity()) {
+      setSent(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
   }
 
   // *
@@ -57,6 +66,7 @@ const QuizResults = ({ results }) => {
         <Confetti
           style={{ zIndex: 20 }}
           colors={['#ff329b', '#f28529', '#6ad300', '#009eeb']}
+          recycle={!sent}
         />
       )}
 
@@ -102,7 +112,19 @@ const QuizResults = ({ results }) => {
               />
               <input type="hidden" name="timeTaken" value={90 - timeTaken} />
               <input type="hidden" name="form-name" value="Quiz Submit" />
-              <Button label="Submit" form={(e) => handleSend(e)} />
+
+              {error && (
+                <Error>
+                  <p>Please fill out both fields correctly</p>
+                </Error>
+              )}
+
+              {!sent && <Button label="Submit" form={(e) => handleSend(e)} />}
+              {sent && (
+                <SentMessage>
+                  <p>Entry submitted &mdash; Good luck!</p>
+                </SentMessage>
+              )}
             </Form>
           )}
         </Results>
@@ -116,6 +138,27 @@ const QuizResults = ({ results }) => {
 export default QuizResults;
 
 //
+
+const SentMessage = styled.span`
+  margin-top: 1.5rem;
+
+  & p {
+    color: var(--ef-kids-pink) !important;
+    font-size: 0.875rem !important;
+  }
+`;
+
+const Error = styled.span`
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+
+  & p {
+    color: var(--ef-kids-orange) !important;
+    font-size: 0.875rem !important;
+  }
+`;
 
 const ResultsWrap = styled(Container)`
   display: flex;
