@@ -45,7 +45,9 @@ const CardWrapper = styled.div`
 
 const FloatAnim = keyframes`
   0% { transform: translate(0,  0) rotate(0); } 
-  50%  { transform: translate(0, 1rem) rotate(-45deg); } 
+  25%  { transform: translate(0, 1rem) rotate(-45deg); } 
+  50% { transform: translate(0,  0) rotate(0); } 
+  75%  { transform: translate(0, 1rem) rotate(45deg); } 
   100%   { transform: translate(0, -0) rotate(0); } 
 `;
 
@@ -78,7 +80,8 @@ const BrandIcons = styled.div`
   & img:nth-of-type(1) {
     /* Pink */
     top: -4.5rem;
-    animation: ${FloatAnim} 30s linear infinite;
+    transition: all 500ms cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+    animation: ${FloatAnim} 10s linear infinite;
 
     @media (min-width: 640px) {
       top: unset;
@@ -90,7 +93,8 @@ const BrandIcons = styled.div`
     /* Orange */
     top: -2.5rem;
     left: 35%;
-    animation: ${FloatAnimAlt} 15s linear infinite;
+    transition: all 500ms cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+    animation: ${FloatAnimAlt} 10s linear infinite;
 
     @media (min-width: 640px) {
       top: unset;
@@ -103,7 +107,8 @@ const BrandIcons = styled.div`
     /* Green */
     right: 30%;
     bottom: -3.5rem;
-    animation: ${FloatAnim} 15s linear infinite;
+    transition: all 500ms cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+    animation: ${FloatAnim} 10s linear infinite;
     animation-direction: alternate-reverse;
 
     @media (min-width: 640px) {
@@ -117,7 +122,8 @@ const BrandIcons = styled.div`
     /* Blue */
     right: 1rem;
     bottom: -2rem;
-    animation: ${FloatAnimAlt} 30s linear infinite;
+    transition: all 500ms cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+    animation: ${FloatAnimAlt} 10s linear infinite;
 
     @media (min-width: 640px) {
       top: 4rem;
