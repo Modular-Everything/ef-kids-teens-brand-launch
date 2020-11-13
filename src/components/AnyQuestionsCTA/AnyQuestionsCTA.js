@@ -199,6 +199,10 @@ const Form = styled.form`
     }
   }
 
+  & textarea {
+    height: 6rem;
+  }
+
   & select {
     color: rgba(25, 25, 25, 0.25);
     background-image: url(${Arrow});
