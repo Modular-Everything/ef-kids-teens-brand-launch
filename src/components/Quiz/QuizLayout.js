@@ -18,7 +18,7 @@ const QuizLayout = ({ questions, sanity }) => {
   // *
   // * Set up timer
 
-  const [timeRemaining, setTimeRemaining] = useState(90);
+  const [timeRemaining, setTimeRemaining] = useState(5);
 
   // *
   // * Set up quiz state
@@ -57,14 +57,18 @@ const QuizLayout = ({ questions, sanity }) => {
     setAnswerStatus(id);
 
     // * Disable clicking other items before next question
-    quizRef.current.style.pointerEvents = 'none';
+    if (quizRef.current) {
+      quizRef.current.style.pointerEvents = 'none';
+    }
 
     setTimeout(() => {
       // * Reset answer status
       setAnswerStatus(null);
 
       // * Re-enable clicking
-      quizRef.current.style.pointerEvents = 'all';
+      if (quizRef.current) {
+        quizRef.current.style.pointerEvents = 'all';
+      }
 
       // * Progress the quiz
       if (quizProgress.questionNumber < quizProgress.totalQuestions) {
