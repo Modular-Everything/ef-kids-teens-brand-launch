@@ -69,8 +69,6 @@ const Timeline = ({ data }) => {
     } else {
       setProgress(0.5);
     }
-
-    console.log(swiper);
   }
 
   // * Render it
