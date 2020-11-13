@@ -121,6 +121,10 @@ const ResultsWrap = styled(Container)`
     flex-direction: row;
   }
 
+  & button {
+    margin: 2rem 0;
+  }
+
   & div {
     width: 100%;
 
