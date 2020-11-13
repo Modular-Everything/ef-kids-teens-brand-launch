@@ -28,13 +28,13 @@ const Answer = ({
 
   let radioContent;
   if (answerStatus === null) {
-    radioContent = null;
+    radioContent = <img src="" alt="" />;
   } else if (isCorrectAnswer) {
-    radioContent = <img src={CorrectIcon} alt="✅" />;
+    radioContent = <img src={CorrectIcon} alt="✅" className="showIcon" />;
   } else if (answerStatus !== id) {
-    radioContent = null;
+    radioContent = <img src="" alt="" />;
   } else {
-    radioContent = <img src={IncorrectIcon} alt="❌" />;
+    radioContent = <img src={IncorrectIcon} alt="❌" className="showIcon" />;
   }
 
   // *
@@ -111,7 +111,14 @@ const Radio = styled.span`
   transition: 350ms ease-in-out box-shadow;
 
   & img {
-    max-width: 2rem;
+    width: 0;
+    transition: width;
+    transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+    transition-duration: 75ms;
+
+    &.showIcon {
+      width: 2rem;
+    }
   }
 `;
 
