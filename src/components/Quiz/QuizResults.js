@@ -33,29 +33,49 @@ const QuizResults = ({ results }) => {
   }
 
   // *
+  // * Input values
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  // *
   // * Handle sending
 
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
 
   const formRef = useRef(null);
-  function handleSend(e) {
-    // formRef.current.submit();
+
+  async function handleSend(e) {
     e.preventDefault();
 
     if (formRef.current.checkValidity()) {
-      setSent(true);
       setError(false);
+
+      const formElements = [...formRef.current.elements];
+      const validElements = formElements
+        .filter((el) => !!el.value)
+        .map(
+          (el) =>
+            `${encodeURIComponent(el.name)}=${encodeURIComponent(el.value)}`
+        )
+        .join('&');
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: validElements,
+      })
+        .then(() => {
+          setSent(true);
+        })
+        .catch((err) => {
+          setError(err);
+        });
     } else {
-      setError(true);
+      setError('Please fill out both fields correctly');
     }
   }
-
-  // *
-  // * Input values
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
 
   // *
   // * Return results
@@ -115,7 +135,7 @@ const QuizResults = ({ results }) => {
 
               {error && (
                 <Error>
-                  <p>Please fill out both fields correctly</p>
+                  <p>{error}</p>
                 </Error>
               )}
 
