@@ -1,7 +1,8 @@
 /* eslint-disable prefer-destructuring */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Confetti from 'react-confetti';
 
 import resultCaptions from '../../data/resultCaptions';
 import Container from '../Container';
@@ -32,10 +33,27 @@ const QuizResults = ({ results }) => {
   }
 
   // *
+  // * Handle sending
+
+  const [sent, setSent] = useState(false);
+
+  const formRef = useRef(null);
+  function handleSend() {
+    formRef.current.submit();
+  }
+
+  // *
+  // * Input values
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  // *
   // * Return results
 
   return (
     <section>
+      <Confetti colors={['#ff329b', '#f28529', '#6ad300', '#009eeb']} />
       <ResultsWrap spacing={[80, 80]}>
         <Title className="title">
           <h2>
@@ -45,12 +63,42 @@ const QuizResults = ({ results }) => {
           </h2>
         </Title>
 
-        <Paragraph>
+        <Results>
           <p>{resultsMessage.resultCaption}</p>
           {percentCorrect !== 100 && (
             <Button label="Try Again" form={() => window.location.reload()} />
           )}
-        </Paragraph>
+
+          {percentCorrect === 100 && (
+            <Form
+              ref={formRef}
+              name="Quiz Submit"
+              method="POST"
+              data-netlify="true"
+            >
+              <input
+                type="text"
+                name="winnerName"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                disabled={sent}
+              />
+              <input
+                type="email"
+                name="winnerEmail"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={sent}
+              />
+              <input type="hidden" name="form-name" value="Quiz Submit" />
+              <Button label="Submit" form={(e) => handleSend(e)} />
+            </Form>
+          )}
+        </Results>
       </ResultsWrap>
 
       <MoodyBlocks mood={results.totalCorrect === 0 ? 'sad' : 'happy'} />
@@ -108,13 +156,9 @@ const Title = styled.div`
   }
 `;
 
-const Paragraph = styled.div`
+const Results = styled.div`
   width: 100%;
   padding: 1rem 0 0 0;
-
-  & button {
-    margin-top: 2rem;
-  }
 
   @media (min-width: 400px) {
     width: 90%;
@@ -122,6 +166,9 @@ const Paragraph = styled.div`
 
   @media (min-width: 640px) {
     width: 50%;
+  }
+
+  @media (min-width: 768px) {
     padding: 0 3rem 0 1.5rem;
   }
 
@@ -134,9 +181,52 @@ const Paragraph = styled.div`
   }
 `;
 
+const Form = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: 80%;
+  }
+
+  & button {
+    margin: 1.5rem auto 0;
+
+    @media (min-width: 640px) {
+      margin: 1.5rem 0 0 auto;
+    }
+  }
+
+  & input {
+    width: 100%;
+    margin: 0;
+    padding: 0.75rem;
+    font-weight: 400;
+    font-size: 1rem;
+    border: 1px solid rgba(25, 25, 25, 0.5);
+    border-radius: 4px;
+
+    &:first-of-type {
+      margin: 2rem 0 1.5rem;
+
+      @media (min-width: 640px) {
+        margin: 1.5rem 0;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.35;
+    }
+
+    &::placeholder {
+      color: rgba(25, 25, 25, 0.5);
+    }
+  }
+`;
+
 //
 
 QuizResults.propTypes = {
   results: PropTypes.object.isRequired,
-  sanity: PropTypes.array.isRequired,
 };

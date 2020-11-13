@@ -15,7 +15,7 @@ const StartLayout = ({ page, sanity }) => (
       <SectionIntro
         title={sanity.quizStartCopy.title}
         copy={sanity.quizStartCopy.paragraph}
-        spacing={[80, 60]}
+        spacing={[80, 40]}
       />
 
       <ButtonWrap>
