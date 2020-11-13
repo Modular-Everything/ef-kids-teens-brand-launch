@@ -19,6 +19,17 @@ const Footer = () => {
   const [blocks, setBlocks] = useState(false);
 
   // *
+  // * Use ESC key to close the game
+
+  if (blocks) {
+    document.body.addEventListener('keyup', (e) => {
+      if (e.key === 'Escape') {
+        setBlocks(false);
+      }
+    });
+  }
+
+  // *
   // * Return it
 
   return (
