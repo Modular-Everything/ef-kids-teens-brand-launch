@@ -2,24 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import useSpace from '../../hooks/useSpace';
 
 //
 
-const LandscapeCard = ({ image, title, copy, ctaLabel, ctaLink }) => (
-  <CardWrapper>
-    <a href={ctaLink} className="img__link">
-      <Img fluid={image.fluid} alt="title" />
-    </a>
+const LandscapeCard = ({ image, title, copy, ctaLabel, ctaLink, spacing }) => (
+  <section style={useSpace(spacing)}>
+    <CardWrapper>
+      <Card>
+        <a href={ctaLink} className="img__link">
+          <Img fluid={image.fluid} alt="title" />
+        </a>
 
-    <CardContent>
-      <h3>{title}</h3>
-      <p>{copy}</p>
+        <CardContent>
+          <div>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>
 
-      <CTA href={ctaLink}>
-        {ctaLabel} <span className="cta__arrow">&rarr;</span>
-      </CTA>
-    </CardContent>
-  </CardWrapper>
+          <CTA href={ctaLink}>
+            {ctaLabel} <span className="cta__arrow">&rarr;</span>
+          </CTA>
+        </CardContent>
+      </Card>
+    </CardWrapper>
+  </section>
 );
 
 export default LandscapeCard;
@@ -27,6 +34,12 @@ export default LandscapeCard;
 //
 
 const CardWrapper = styled.div`
+  max-width: 88rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const Card = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -56,8 +69,12 @@ const CardContent = styled.div`
   width: 100%;
   padding: 1.5rem;
 
-  @media (min-width: 640px) {
-    width: calc(100% - 3rem);
+  @media (min-width: 700px) {
+    width: calc(70% - 3rem);
+  }
+
+  @media (min-width: 1000px) {
+    width: calc(45% - 3rem);
   }
 
   & h3 {
@@ -88,4 +105,15 @@ const CTA = styled.a`
 
 //
 
-LandscapeCard.propTypes = {};
+LandscapeCard.propTypes = {
+  image: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  copy: PropTypes.string.isRequired,
+  ctaLabel: PropTypes.string.isRequired,
+  ctaLink: PropTypes.string.isRequired,
+  spacing: PropTypes.array,
+};
+
+LandscapeCard.defaultProps = {
+  spacing: [0, 0],
+};

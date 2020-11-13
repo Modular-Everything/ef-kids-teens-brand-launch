@@ -101,22 +101,22 @@ const IndexPage = ({ location, data }) => {
 
         <Carousel slides={sanity.schoolSites} />
 
-        <Container spacing={[110, 140]}>
+        <Container spacing={[110, 132]}>
           <SectionIntro
             title={sanity.talkingHeadsCopy.title}
             copy={sanity.talkingHeadsCopy.paragraph}
             small
-            spacing={[0, 132]}
-          />
-
-          <LandscapeCard
-            image={sanity.guidelinesCta.ctaImage.asset}
-            title={sanity.guidelinesCta.ctaCopy.title}
-            copy={sanity.guidelinesCta.ctaCopy.paragraph}
-            ctaLabel={sanity.guidelinesCta.ctaLabel}
-            ctaLink={sanity.guidelinesCta.ctaLink}
           />
         </Container>
+
+        <LandscapeCard
+          image={sanity.guidelinesCta.ctaImage.asset}
+          title={sanity.guidelinesCta.ctaCopy.title}
+          copy={sanity.guidelinesCta.ctaCopy.paragraph}
+          ctaLabel={sanity.guidelinesCta.ctaLabel}
+          ctaLink={sanity.guidelinesCta.ctaLink}
+          spacing={[0, 140]}
+        />
 
         <Container spacing={[0, 120]}>
           <SectionIntro
@@ -175,7 +175,7 @@ export const query = graphql`
         ctaLabel
         ctaImage {
           asset {
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 1920) {
               ...GatsbySanityImageFluid
             }
           }
