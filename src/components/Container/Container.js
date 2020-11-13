@@ -12,8 +12,8 @@ const PageContainer = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 
   ${breakpoints.map(
     (bp) => `@media(min-width: ${bp / 16}rem) { max-width: ${bp / 16}rem; }`

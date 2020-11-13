@@ -158,7 +158,7 @@ const Scene = () => {
   }, []);
 
   setInterval(() => {
-    if (timer > 0) {
+    if (timer >= 1) {
       setTimer(timer - 1);
     } else {
       setMessage(false);
@@ -208,6 +208,8 @@ const Message = styled.div`
   z-index: 15;
   display: flex;
   justify-content: space-between;
+  width: calc(100% - 2rem);
+  max-width: 32rem;
   padding: 1.5rem;
   background-color: #fff;
   border-radius: 4px;
@@ -216,7 +218,7 @@ const Message = styled.div`
 
   & p {
     width: 70%;
-    margin: 0;
+    margin: 0 1rem 0 0;
     font-weight: 300;
     line-height: 1.5rem;
   }
@@ -225,5 +227,6 @@ const Message = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 25%;
+    min-width: 7rem;
   }
 `;

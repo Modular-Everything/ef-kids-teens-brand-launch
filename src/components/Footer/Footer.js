@@ -158,10 +158,12 @@ const FooterWrap = styled(Container)`
   z-index: 10;
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 
   @media (min-width: 640px) {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     padding: 0 8rem;
   }
 
