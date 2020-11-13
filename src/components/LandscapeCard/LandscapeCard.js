@@ -58,6 +58,17 @@ const Card = styled.div`
 
     & .img__link {
       width: calc(100% - 1.5rem);
+      overflow: hidden;
+
+      & .gatsby-image-wrapper {
+        transition: all ease-in-out 150ms;
+      }
+
+      &:hover {
+        & .gatsby-image-wrapper {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 `;
