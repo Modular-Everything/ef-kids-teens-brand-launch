@@ -46,6 +46,11 @@ const RevealMoreWrap = styled.section`
     border: none;
     cursor: pointer;
 
+    &:focus {
+      outline: 0;
+      opacity: 0.5;
+    }
+
     & span {
       margin: 0;
       color: var(--ef-black);
