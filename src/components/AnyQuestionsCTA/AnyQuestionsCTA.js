@@ -186,6 +186,14 @@ const Form = styled.form`
     border: 1px solid rgba(25, 25, 25, 0.5);
     border-radius: 4px;
 
+    &:focus {
+      border-color: var(--color-ui-accent, #009eeb);
+      outline: none;
+      box-shadow: 0 4px 12px 0 rgba(0, 158, 235, 0.5);
+      transition: border 0.25s linear,
+        box-shadow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
     @media (max-width: 640px) {
       width: 100%;
     }
