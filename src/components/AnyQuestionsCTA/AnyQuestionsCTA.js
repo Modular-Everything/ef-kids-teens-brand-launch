@@ -85,7 +85,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
           <input
             type="text"
             name="name"
-            placeholder="Name"
+            placeholder="Name*"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -95,7 +95,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
           <input
             type="email"
             name="email"
-            placeholder="Email address"
+            placeholder="Email address*"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -105,7 +105,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
           <input
             type="text"
             name="jobTitle"
-            placeholder="Job Title"
+            placeholder="Job Title*"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             required
@@ -122,7 +122,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             style={{ color: queryType !== 'placeholder' && '#191919' }}
           >
             <option value="placeholder" disabled hidden>
-              Query Type
+              Query Type*
             </option>
             <option value="sampleQuery">Sample Query</option>
             <option value="anotherQuery">Another Query</option>
@@ -130,7 +130,7 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
 
           <textarea
             name="message"
-            placeholder="Write your message here"
+            placeholder="Write your message here*"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
