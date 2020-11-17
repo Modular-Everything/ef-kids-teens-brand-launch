@@ -98,7 +98,7 @@ const CardContent = styled.div`
 
   & p {
     margin: 2rem 0;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 1rem;
     line-height: 1.5rem;
   }
