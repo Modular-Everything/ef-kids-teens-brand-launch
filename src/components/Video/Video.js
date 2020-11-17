@@ -125,6 +125,14 @@ const VideoWrap = styled.section`
   position: relative;
 
   ${(props) =>
+    props.type === 'card' &&
+    `
+    box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
+    overflow: hidden;
+    border-radius: 4px;
+  `}
+
+  ${(props) =>
     props.isPlaceholder === 'placeholder' &&
     props.type !== 'card' &&
     `
