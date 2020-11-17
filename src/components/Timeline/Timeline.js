@@ -38,7 +38,7 @@ const Timeline = ({ data }) => {
     // 1. get the height of MarkerWrap and divide by 2 and + 10
     //    (this gets the bottom position of the line)
     setVerticalPosition(
-      MARKER_REF.current.offsetHeight / 2 + DOT_REF.current.offsetHeight / 2 - 6
+      MARKER_REF.current.offsetHeight / 2 + DOT_REF.current.offsetHeight / 2 - 5
     );
 
     // 2. get the width of the first card (swiper method: slidesSizesGrid[0])
@@ -47,7 +47,7 @@ const Timeline = ({ data }) => {
       swiper.slidesSizesGrid[0] / 2 + DOT_REF.current.offsetWidth
     );
 
-    // 3. get the width of the line with some crazy numbers
+    // 3. get the width of the line
     const totalSlides = swiper.slidesSizesGrid.length;
     setLineWidth(
       swiper.virtualSize -

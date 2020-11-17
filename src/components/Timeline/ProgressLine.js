@@ -33,7 +33,7 @@ export default ProgressLine;
 const Line = styled.div`
   position: absolute;
   width: 100%;
-  height: 1px;
+  height: 3px;
   background: black;
 `;
 
