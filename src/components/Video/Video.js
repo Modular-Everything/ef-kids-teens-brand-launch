@@ -127,9 +127,11 @@ const VideoWrap = styled.section`
   ${(props) =>
     props.type === 'card' &&
     `
-    box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
-    overflow: hidden;
-    border-radius: 4px;
+    & div:first-of-type {
+      box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
+      overflow: hidden;
+      border-radius: 4px;
+    }
   `}
 
   ${(props) =>
