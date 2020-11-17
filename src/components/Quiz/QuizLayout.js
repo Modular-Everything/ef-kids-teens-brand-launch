@@ -18,7 +18,7 @@ const QuizLayout = ({ questions, sanity }) => {
   // *
   // * Set up timer
 
-  const [timeRemaining, setTimeRemaining] = useState(5);
+  const [timeRemaining, setTimeRemaining] = useState(90);
 
   // *
   // * Set up quiz state
