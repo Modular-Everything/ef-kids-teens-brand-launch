@@ -129,8 +129,10 @@ const IndexPage = ({ location, data }) => {
             videoData={sanity.uniformInfo.uniformVideo.url}
             type="card"
             placeholderImg={
+              !sanity.uniformInfo.uniformVideo.videoPlaceholder &&
               sanity.uniformInfo.uniformVideo.imgPlaceholder.asset.url
             }
+            placeholderVideo={sanity.uniformInfo.uniformVideo.videoPlaceholder}
           />
         </Container>
 

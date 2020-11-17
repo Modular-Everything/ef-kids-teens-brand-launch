@@ -71,6 +71,7 @@ const Video = ({
     <VideoWrap
       style={useSpace(spacing)}
       isPlaceholder={placeholderVideo && !playing && 'placeholder'}
+      type={type}
     >
       {!playing && placeholderVideo && (
         <>
@@ -125,6 +126,7 @@ const VideoWrap = styled.section`
 
   ${(props) =>
     props.isPlaceholder === 'placeholder' &&
+    props.type !== 'card' &&
     `
     height: auto;
     padding-bottom: 56%;
