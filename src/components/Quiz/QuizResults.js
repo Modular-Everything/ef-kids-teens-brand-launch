@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Confetti from 'react-confetti';
 
-import resultCaptions from '../../data/resultCaptions';
 import Container from '../Container';
 import MoodyBlocks from '../MoodyBlocks';
 import Button from '../Button';
 
 //
 
-const QuizResults = ({ results }) => {
+const QuizResults = ({ results, sanity }) => {
+  console.log(sanity);
+
   // *
   // * Figure out a percentage of correct answers
 
@@ -21,15 +22,16 @@ const QuizResults = ({ results }) => {
   // *
   // * Change the message depending on result
   // ** This is a bit messy but apparently is faster than switch
+
   let resultsMessage = null;
   if (percentCorrect === 0) {
-    resultsMessage = resultCaptions.quizResults[0];
+    resultsMessage = sanity[0];
   } else if (percentCorrect <= 66) {
-    resultsMessage = resultCaptions.quizResults[1];
+    resultsMessage = sanity[1];
   } else if (percentCorrect > 66 && percentCorrect < 100) {
-    resultsMessage = resultCaptions.quizResults[2];
+    resultsMessage = sanity[2];
   } else if (percentCorrect === 100) {
-    resultsMessage = resultCaptions.quizResults[3];
+    resultsMessage = sanity[3];
   }
 
   // *
@@ -303,4 +305,5 @@ const Form = styled.form`
 
 QuizResults.propTypes = {
   results: PropTypes.object.isRequired,
+  sanity: PropTypes.array.isRequired,
 };
