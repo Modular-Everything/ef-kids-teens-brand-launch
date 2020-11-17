@@ -62,6 +62,11 @@ const ButtonWrapForm = styled.button`
   &:hover {
     box-shadow: 0 0 16px rgba(0, 158, 235, 0.4);
   }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 2px 12px 0 #009eeb;
+  }
 `;
 
 //
