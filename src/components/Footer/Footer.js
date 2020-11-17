@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Container from '../Container';
 import Scene from '../Scene';
 import MailIcon from '../../assets/icons/mail.svg';
-import PeopleIcon from '../../assets/icons/people.svg';
+import BookIcon from '../../assets/icons/book.svg';
 import PhoneIcon from '../../assets/icons/phone.svg';
 import BalloonIcon from '../../assets/icons/balloon.svg';
 import CloseIcon from '../../assets/icons/close.svg';
@@ -48,16 +48,16 @@ const Footer = () => {
           </div>
         </a>
 
-        <a href="https://www.ef.com/teams" className="iconWrap">
+        <a href="http://gud.english1.com/" className="iconWrap">
           <span
             className="icon"
             style={{ backgroundColor: 'var(--ef-kids-orange)' }}
           >
-            <img src={PeopleIcon} alt="" />
+            <img src={BookIcon} alt="" />
           </span>
           <div className="content">
-            <span className="heading">Teams</span>
-            <span className="copy">The global K&amp;T group</span>
+            <span className="heading">Brand Guidance</span>
+            <span className="copy">The K&amp;T Identity</span>
           </div>
         </a>
 
