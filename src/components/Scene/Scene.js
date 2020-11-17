@@ -219,13 +219,16 @@ const Message = styled.div`
   & p {
     width: 70%;
     margin: 0 1rem 0 0;
-    font-weight: 300;
-    line-height: 1.5rem;
+    color: var(--ef-black);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   & .button {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     width: 25%;
     min-width: 7rem;
   }
