@@ -124,8 +124,8 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
             <option value="placeholder" disabled hidden>
               Query Type*
             </option>
-            <option value="sampleQuery">Sample Query</option>
-            <option value="anotherQuery">Another Query</option>
+            <option value="Sample Query">Sample Query</option>
+            <option value="Another Query">Another Query</option>
           </select>
 
           <textarea
