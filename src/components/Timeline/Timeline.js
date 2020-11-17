@@ -171,7 +171,7 @@ const CardContainer = styled.section`
   }
 
   & .carousel__rightArrow {
-    right: -1.5rem;
+    right: -2.5rem;
     transform: translateY(-50%) rotate(180deg);
   }
 
