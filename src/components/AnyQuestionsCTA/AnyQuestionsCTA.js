@@ -194,6 +194,10 @@ const Form = styled.form`
         box-shadow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
+    &:invalid {
+      border: 1px solid red;
+    }
+
     @media (max-width: 640px) {
       width: 100%;
     }
