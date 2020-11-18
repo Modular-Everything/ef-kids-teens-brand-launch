@@ -74,6 +74,7 @@ const IndexPage = ({ location, data }) => {
               captionTitle={sanity.talkingHeads[0].captionTitle}
               captionCopy={sanity.talkingHeads[0].captionCopy}
               placeholderImg={
+                sanity.talkingHeads[0].url.imgPlaceholder &&
                 sanity.talkingHeads[0].url.imgPlaceholder.asset.url
               }
             />
