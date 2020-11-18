@@ -74,7 +74,7 @@ const Video = ({
       type={type}
     >
       {!playing && placeholderVideo && (
-        <>
+        <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
           <PlayButton onClick={() => setPlaying(true)} />
           <FullWidthVideo type="placeholder">
             <ReactPlayer
@@ -91,7 +91,7 @@ const Video = ({
               onReady={() => getRatio()}
             />
           </FullWidthVideo>
-        </>
+        </div>
       )}
 
       {(playing || placeholderImg) && (
