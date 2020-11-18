@@ -45,7 +45,6 @@ const ButtonWrap = styled.div`
   & div {
     display: flex;
     width: 100%;
-    padding: 0 0 0 1.5rem;
 
     @media (min-width: 400px) {
       width: 90%;
@@ -53,6 +52,7 @@ const ButtonWrap = styled.div`
 
     @media (min-width: 640px) {
       width: 50%;
+      padding: 0 0 0 1.5rem;
     }
   }
 `;

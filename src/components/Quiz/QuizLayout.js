@@ -18,7 +18,7 @@ const QuizLayout = ({ questions, sanity }) => {
   // *
   // * Set up timer
 
-  const [timeRemaining, setTimeRemaining] = useState(90);
+  const [timeRemaining, setTimeRemaining] = useState(900);
 
   // *
   // * Set up quiz state
@@ -161,22 +161,44 @@ export default QuizLayout;
 //
 
 const QuizWrap = styled(Container)`
-  display: flex;
+  @media (min-width: 640px) {
+    display: flex;
+  }
 
   & .timer {
-    width: 25%;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    @media (min-width: 640px) {
+      width: 25%;
+      margin-bottom: 0;
+    }
   }
 
   & .questions {
-    width: calc(40% - 1rem);
-    margin-left: 1rem;
+    width: 100%;
+
+    @media (min-width: 640px) {
+      width: calc(60% - 1rem);
+      margin-left: 1rem;
+    }
+
+    @media (min-width: 960px) {
+      width: calc(40% - 1rem);
+    }
 
     & p {
-      margin-top: 2rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0;
       color: var(--ef-black);
       font-weight: 300;
       font-size: 1rem;
       line-height: 1.5rem;
+
+      @media (min-width: 640px) {
+        margin-top: 2rem;
+        margin-bottom: unset;
+      }
     }
   }
 
@@ -185,14 +207,23 @@ const QuizWrap = styled(Container)`
     margin: 0;
     color: var(--ef-black);
     font-weight: 700;
-    font-size: 3rem;
-    line-height: 3.5rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+
+    @media (min-width: 640px) {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
   }
 `;
 
 const Answers = styled.ol`
-  margin: 3.5rem 0 0 0;
+  margin: 2.5rem 0 0 0;
   padding: 0;
+
+  @media (min-width: 640px) {
+    margin: 3.5rem 0 0 0;
+  }
 `;
 
 //

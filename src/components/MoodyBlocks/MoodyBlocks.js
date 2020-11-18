@@ -22,6 +22,7 @@ const BgBlocks = styled.img`
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: -1;
   width: 100vw;
   pointer-events: none;
 

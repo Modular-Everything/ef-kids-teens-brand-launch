@@ -174,9 +174,17 @@ const Error = styled.span`
   display: flex;
   align-content: center;
   align-items: center;
+  width: 100%;
   margin-top: 1.5rem;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    width: unset;
+    text-align: unset;
+  }
 
   & p {
+    width: 100%;
     color: var(--ef-kids-orange) !important;
     font-size: 0.875rem !important;
   }
