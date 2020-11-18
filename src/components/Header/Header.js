@@ -14,10 +14,10 @@ const Header = ({ title, back }) => (
     <HeaderContainer>
       {back && (
         <Return to="/">
-          <span>
+          <span className="header__backArrow">
             <img src={ArrowLeft} alt="" />
           </span>
-          Back to main site
+          <span className="header__backCopy">Back to main site</span>
         </Return>
       )}
 
@@ -52,21 +52,24 @@ const LogoWrap = styled(Link)`
 `;
 
 const Return = styled(Link)`
-  display: none;
   color: var(--ef-black);
   text-decoration: none;
 
-  @media (min-width: 768px) {
-    display: block;
-  }
-
-  & span {
+  & .header__backArrow {
     display: inline-block;
     width: 1rem;
     margin-right: 1.5rem;
 
     & img {
       width: 100%;
+    }
+  }
+
+  & .header__backCopy {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
     }
   }
 `;
