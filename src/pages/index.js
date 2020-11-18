@@ -56,29 +56,17 @@ const IndexPage = ({ location, data }) => {
             spacing={[0, 64]}
           />
 
-          {sanity.talkingHeads.length > 1 ? (
-            <CardGrid hasCaption>
-              {sanity.talkingHeads.map((head) => (
-                <Video
-                  videoData={head.url}
-                  type="card"
-                  captionTitle={head.captionTitle}
-                  captionCopy={head.captionCopy}
-                />
-              ))}
-            </CardGrid>
-          ) : (
-            <Video
-              videoData={sanity.talkingHeads[0].url.url}
-              type="card"
-              captionTitle={sanity.talkingHeads[0].captionTitle}
-              captionCopy={sanity.talkingHeads[0].captionCopy}
-              placeholderImg={
-                sanity.talkingHeads[0].url.imgPlaceholder &&
-                sanity.talkingHeads[0].url.imgPlaceholder.asset.url
-              }
-            />
-          )}
+          <Video
+            videoData={sanity.talkingHeads[0].url.url}
+            type="card"
+            captionTitle={sanity.talkingHeads[0].captionTitle}
+            captionCopy={sanity.talkingHeads[0].captionCopy}
+            placeholderVideo={sanity.talkingHeads[0].url.videoPlaceholder}
+            placeholderImg={
+              sanity.talkingHeads[0].url.imgPlaceholder &&
+              sanity.talkingHeads[0].url.imgPlaceholder.asset.url
+            }
+          />
         </Container>
 
         <Container>
