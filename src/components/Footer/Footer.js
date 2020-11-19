@@ -105,7 +105,7 @@ const Footer = () => {
           <Skrim />
 
           <Helmet>
-            <style tyle="text/css">{`body { overflow: hidden; }`}</style>
+            <style tyle="text/css">{`html, body { overflow: hidden; transform: unset; }`}</style>
           </Helmet>
         </div>
       )}

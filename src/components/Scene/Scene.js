@@ -108,6 +108,14 @@ const Scene = () => {
 
     engine.world.gravity.y = 0;
 
+    document.body.addEventListener('keyup', (e) => {
+      if (e.key === 'ArrowUp') {
+        engine.world.gravity.y = 2;
+      } else if (e.key === 'ArrowDown') {
+        engine.world.gravity.y = 0;
+      }
+    });
+
     // *
     // * Build our walls and add them to the world
 
