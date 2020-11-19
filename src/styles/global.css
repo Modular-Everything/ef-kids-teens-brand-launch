@@ -12,9 +12,7 @@ html {
 }
 
 html, body {
-  width: 100%;
   /* Safari compatibility */
-  height: 100%;
   overflow-x: hidden;
   font-family: var(--font-stack);
   transform: translate3d(0,0,0);
