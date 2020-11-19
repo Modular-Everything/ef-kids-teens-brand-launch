@@ -90,7 +90,9 @@ const Video = ({
               muted
               config={{
                 vimeo: {
-                  background: true,
+                  playerOptions: {
+                    background: true,
+                  },
                 },
               }}
               onReady={() => getRatio()}
