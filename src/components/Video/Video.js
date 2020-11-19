@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import ReactPlayer from 'react-player/vimeo';
 import Vimeo from '@u-wave/react-vimeo';
 
 import PlayIcon from '../../assets/icons/play.svg';
@@ -35,30 +34,10 @@ const Video = ({
   placeholderVideo,
   placeholderImg,
 }) => {
-  // !
-  // ! Define refs
-
-  // const VideoRef = useRef(null);
-
   // *
   // * Playing state
 
   const [playing, setPlaying] = useState(false);
-
-  // !
-  // ! Get the aspect ratio of the video
-
-  // function getRatio() {
-  // console.log(VideoRef.current);
-  // const player = VideoRef.current.wrapper.children[0].children[0];
-  // const { height, width } = player;
-
-  // aspectRatio.current = Math.floor(
-  //   (parseInt(height) / parseInt(width)) * 100
-  // );
-
-  // VideoRef.current.wrapper.parentNode.style.paddingBottom = `${aspectRatio.current}%`;
-  // }
 
   // *
   // * Does it have a caption?
@@ -78,26 +57,6 @@ const Video = ({
         <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
           <PlayButton onClick={() => setPlaying(true)} />
           <FullWidthVideo type="placeholder">
-            {/* <ReactPlayer
-              className="videoPlaceholder"
-              url={placeholderVideo}
-              width="100%"
-              height="100%"
-              playing
-              controls={false}
-              ref={VideoRef}
-              volume={0}
-              loop
-              muted
-              config={{
-                vimeo: {
-                  playerOptions: {
-                    background: true,
-                  },
-                },
-              }}
-              onReady={() => getRatio()}
-            /> */}
             <Vimeo
               className="videoPlaceholder"
               video={placeholderVideo}
@@ -116,24 +75,6 @@ const Video = ({
 
       {(playing || placeholderImg) && (
         <FullWidthVideo type={type}>
-          {/* <ReactPlayer
-            url={videoData}
-            ref={VideoRef}
-            width="100%"
-            height="100%"
-            playIcon={<PlayButton />}
-            light={placeholderImg || null}
-            playing={placeholderVideo}
-            controls
-            muted={window && window.innerWidth > 600}
-            config={{
-              vimeo: {
-                background: true,
-              },
-            }}
-            onReady={() => getRatio()}
-          /> */}
-
           <Vimeo
             video={videoData}
             width="100%"
@@ -141,6 +82,7 @@ const Video = ({
             autopause={false}
             autoplay
             controls
+            muted={window && window.innerWidth < 500}
           />
         </FullWidthVideo>
       )}
