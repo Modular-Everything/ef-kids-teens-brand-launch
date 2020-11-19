@@ -88,6 +88,11 @@ const Video = ({
               volume={0}
               loop
               muted
+              config={{
+                vimeo: {
+                  background: true,
+                },
+              }}
               onReady={() => getRatio()}
             />
           </FullWidthVideo>
@@ -105,6 +110,12 @@ const Video = ({
             light={placeholderImg || null}
             playing={placeholderVideo}
             controls
+            muted={window && window.innerWidth > 600}
+            config={{
+              vimeo: {
+                background: true,
+              },
+            }}
             onReady={() => getRatio()}
           />
         </FullWidthVideo>
