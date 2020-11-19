@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ReactPlayer from 'react-player/vimeo';
+// import ReactPlayer from 'react-player/vimeo';
+import Vimeo from '@u-wave/react-vimeo';
 
 import PlayIcon from '../../assets/icons/play.svg';
 import useSpace from '../../hooks/useSpace';
@@ -34,30 +35,30 @@ const Video = ({
   placeholderVideo,
   placeholderImg,
 }) => {
-  // *
-  // * Define refs
+  // !
+  // ! Define refs
 
-  const VideoRef = useRef(null);
-  const aspectRatio = useRef(0);
+  // const VideoRef = useRef(null);
 
   // *
   // * Playing state
 
   const [playing, setPlaying] = useState(false);
 
-  // *
-  // * Get the aspect ratio of the video
+  // !
+  // ! Get the aspect ratio of the video
 
-  function getRatio() {
-    const player = VideoRef.current.wrapper.children[0].children[0];
-    const { height, width } = player;
+  // function getRatio() {
+  // console.log(VideoRef.current);
+  // const player = VideoRef.current.wrapper.children[0].children[0];
+  // const { height, width } = player;
 
-    aspectRatio.current = Math.floor(
-      (parseInt(height) / parseInt(width)) * 100
-    );
+  // aspectRatio.current = Math.floor(
+  //   (parseInt(height) / parseInt(width)) * 100
+  // );
 
-    VideoRef.current.wrapper.parentNode.style.paddingBottom = `${aspectRatio.current}%`;
-  }
+  // VideoRef.current.wrapper.parentNode.style.paddingBottom = `${aspectRatio.current}%`;
+  // }
 
   // *
   // * Does it have a caption?
@@ -77,7 +78,7 @@ const Video = ({
         <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
           <PlayButton onClick={() => setPlaying(true)} />
           <FullWidthVideo type="placeholder">
-            <ReactPlayer
+            {/* <ReactPlayer
               className="videoPlaceholder"
               url={placeholderVideo}
               width="100%"
@@ -96,6 +97,18 @@ const Video = ({
                 },
               }}
               onReady={() => getRatio()}
+            /> */}
+            <Vimeo
+              className="videoPlaceholder"
+              video={placeholderVideo}
+              width="100%"
+              height="100%"
+              autopause={false}
+              autoplay
+              controls={false}
+              loop
+              muted
+              background
             />
           </FullWidthVideo>
         </div>
@@ -103,7 +116,7 @@ const Video = ({
 
       {(playing || placeholderImg) && (
         <FullWidthVideo type={type}>
-          <ReactPlayer
+          {/* <ReactPlayer
             url={videoData}
             ref={VideoRef}
             width="100%"
@@ -119,6 +132,15 @@ const Video = ({
               },
             }}
             onReady={() => getRatio()}
+          /> */}
+
+          <Vimeo
+            video={videoData}
+            width="100%"
+            height="100%"
+            autopause={false}
+            autoplay
+            controls
           />
         </FullWidthVideo>
       )}
@@ -152,7 +174,7 @@ const VideoWrap = styled.section`
     props.type !== 'card' &&
     `
     height: auto;
-    padding-bottom: 56%;
+    padding-bottom: 56.25%;
     overflow: hidden;
     
       @media (min-width: 1060px) {
@@ -206,7 +228,7 @@ const CaptionWrap = styled.div`
 
 const FullWidthVideo = styled.div`
   position: relative;
-  padding-bottom: 50%;
+  padding-bottom: 56.25%;
   overflow: hidden;
   border-bottom: 1px solid #efefef;
 
@@ -237,7 +259,7 @@ const FullWidthVideo = styled.div`
       box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
   `}
 
-  & div {
+  & div, & iframe {
     position: absolute;
     top: 0;
     left: 0;
