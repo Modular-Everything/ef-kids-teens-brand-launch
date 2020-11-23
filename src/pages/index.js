@@ -92,8 +92,8 @@ const IndexPage = ({ location, data }) => {
 
         <Container spacing={[110, 132]}>
           <SectionIntro
-            title={sanity.talkingHeadsCopy.title}
-            copy={sanity.talkingHeadsCopy.paragraph}
+            title={sanity.schoolSitesCopy.title}
+            copy={sanity.schoolSitesCopy.paragraph}
             small
           />
         </Container>
@@ -260,6 +260,10 @@ export const query = graphql`
         paragraph
       }
       timelineCopy {
+        title
+        paragraph
+      }
+      schoolSitesCopy {
         title
         paragraph
       }
