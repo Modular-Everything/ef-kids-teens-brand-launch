@@ -37,6 +37,7 @@ export default StartLayout;
 const ButtonWrap = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 2rem;
 
   @media (min-width: 640px) {
     flex-direction: row;
