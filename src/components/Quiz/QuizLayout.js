@@ -184,7 +184,7 @@ const QuizWrap = styled(Container)`
     }
 
     @media (min-width: 960px) {
-      width: calc(40% - 1rem);
+      width: calc(50% - 1rem);
     }
 
     & p {
