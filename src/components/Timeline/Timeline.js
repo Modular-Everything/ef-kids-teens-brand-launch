@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
-import Container from '../Container';
+import { Helmet } from 'react-helmet';
 
+import Container from '../Container';
 import ProgressLine from './ProgressLine';
 import Card from './Card';
 import ImageCard from './ImageCard';
@@ -75,6 +76,12 @@ const Timeline = ({ data }) => {
 
   return (
     <Container>
+      <Helmet>
+        <style type="text/css">{`
+          body, html { transform: translate3d(0, 0, 0); }
+        `}</style>
+      </Helmet>
+
       <CardContainer>
         <Arrow
           className={`carousel__arrow carousel__leftArrow ${
@@ -132,7 +139,6 @@ const Timeline = ({ data }) => {
           })}
         </SwiperWrap>
       </CardContainer>
-
       <ProgressLine
         offset={lineOffset}
         vertical={verticalPosition}

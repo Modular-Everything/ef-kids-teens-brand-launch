@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-// import sanity from '../data/sanity';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
 import Timeline from '../components/Timeline';
@@ -11,7 +11,6 @@ import LandscapeCard from '../components/LandscapeCard';
 import SectionIntro from '../components/SectionIntro';
 import RevealMore from '../components/RevealMore';
 import Video from '../components/Video';
-import CardGrid from '../components/CardGrid';
 import BrandedCTA from '../components/BrandedCTA';
 import AnyQuestionsCTA from '../components/AnyQuestionsCTA';
 import Carousel from '../components/Carousel';

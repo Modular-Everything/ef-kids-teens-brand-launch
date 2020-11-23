@@ -12,10 +12,8 @@ html {
 }
 
 html, body {
-  /* Safari compatibility */
   overflow-x: hidden;
   font-family: var(--font-stack);
-  transform: translate3d(0,0,0);
 }
 
 button, input, select, option, textarea {
