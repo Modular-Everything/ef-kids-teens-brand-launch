@@ -16,8 +16,6 @@ const QuizPage = ({ location, data }) => {
   const sanity = data.allSanityQuizPage.nodes[0];
   const questions = data.allSanityQuizQuestions;
 
-  console.log(data);
-
   // *
   // * Set active page
 

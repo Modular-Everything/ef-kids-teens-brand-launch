@@ -38,8 +38,6 @@ const AnyQuestionsCTA = ({ title, copy, spacing }) => {
     e.preventDefault();
 
     if (!formRef.current.checkValidity()) {
-      console.log(formRef);
-
       formRef.current.childNodes.forEach((el) => {
         if (el.required && el.value === '') {
           el.classList.add('invalid');

@@ -22,7 +22,6 @@ driver.get('https://www.google.com').then(function () {
     .sendKeys('BrowserStack')
     .then(function () {
       driver.getTitle().then(function (title) {
-        console.log(title);
         driver.quit();
       });
     });

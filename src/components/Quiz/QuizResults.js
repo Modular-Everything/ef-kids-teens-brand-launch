@@ -11,8 +11,6 @@ import Button from '../Button';
 //
 
 const QuizResults = ({ results, sanity }) => {
-  console.log(sanity);
-
   // *
   // * Figure out a percentage of correct answers
 
