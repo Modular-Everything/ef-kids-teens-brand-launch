@@ -266,12 +266,6 @@ export const query = graphql`
       uniformInfo {
         uniformCopy {
           title
-          portableText {
-            children {
-              text
-              marks
-            }
-          }
         }
       }
     }
