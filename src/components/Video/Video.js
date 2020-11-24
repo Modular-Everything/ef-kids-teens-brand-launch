@@ -33,6 +33,7 @@ const Video = ({
   spacing,
   placeholderVideo,
   placeholderImg,
+  noPlay,
 }) => {
   // *
   // * Playing state
@@ -52,10 +53,11 @@ const Video = ({
       style={useSpace(spacing)}
       isPlaceholder={placeholderVideo && !playing && 'placeholder'}
       type={type}
+      className={type}
     >
       {!playing && placeholderVideo && (
         <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
-          <PlayButton onClick={() => setPlaying(true)} />
+          {!noPlay && <PlayButton onClick={() => setPlaying(true)} />}
           <FullWidthVideo type="placeholder">
             <Vimeo
               className="videoPlaceholder"
@@ -220,6 +222,7 @@ Video.propTypes = {
   spacing: PropTypes.array,
   placeholderVideo: PropTypes.string,
   placeholderImg: PropTypes.object,
+  noPlay: PropTypes.bool,
 };
 
 Video.defaultProps = {
@@ -229,6 +232,7 @@ Video.defaultProps = {
   spacing: [0, 0],
   placeholderVideo: null,
   placeholderImg: null,
+  noPlay: false,
 };
 
 Caption.propTypes = {

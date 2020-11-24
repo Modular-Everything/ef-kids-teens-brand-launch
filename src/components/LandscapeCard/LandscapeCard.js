@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
+
 import useSpace from '../../hooks/useSpace';
+import Video from '../Video';
 
 //
 
-const LandscapeCard = ({ image, title, copy, ctaLabel, ctaLink, spacing }) => (
+const LandscapeCard = ({ video, title, copy, ctaLabel, ctaLink, spacing }) => (
   <section style={useSpace(spacing)}>
     <CardWrapper>
       <Card>
         <a href={ctaLink} className="img__link">
-          <Img fluid={image.fluid} alt="title" />
+          <Video placeholderVideo={video} type="placeholder" noPlay />
         </a>
 
         <CardContent>
@@ -47,13 +48,11 @@ const Card = styled.div`
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(25, 25, 25, 0.15);
 
-  & .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  & .placeholder {
+    height: unset;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 1234px) {
     flex-direction: row;
 
     & .img__link {
@@ -80,11 +79,11 @@ const CardContent = styled.div`
   width: 100%;
   padding: 1.5rem;
 
-  @media (min-width: 700px) {
+  /* @media (min-width: 700px) {
     width: calc(70% - 3rem);
-  }
+  } */
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1234px) {
     width: calc(45% - 3rem);
   }
 
@@ -94,6 +93,10 @@ const CardContent = styled.div`
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.5rem;
+
+    @media (min-width: 880px) and (max-width: 1233px) {
+      width: 50%;
+    }
   }
 
   & p {
@@ -101,6 +104,10 @@ const CardContent = styled.div`
     font-weight: 300;
     font-size: 1rem;
     line-height: 1.5rem;
+
+    @media (min-width: 880px) and (max-width: 1233px) {
+      width: 50%;
+    }
   }
 `;
 

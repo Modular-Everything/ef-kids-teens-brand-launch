@@ -97,7 +97,7 @@ const IndexPage = ({ location, data }) => {
         </Container>
 
         <LandscapeCard
-          image={sanity.guidelinesCta.ctaImage.asset}
+          video={sanity.guidelinesCta.ctaVideo.url}
           title={sanity.guidelinesCta.ctaCopy.title}
           copy={sanity.guidelinesCta.ctaCopy.paragraph}
           ctaLabel={sanity.guidelinesCta.ctaLabel}
@@ -162,12 +162,8 @@ export const query = graphql`
         }
         ctaLink
         ctaLabel
-        ctaImage {
-          asset {
-            fluid(maxWidth: 1920) {
-              ...GatsbySanityImageFluid
-            }
-          }
+        ctaVideo {
+          url
         }
       }
       # Timeline
