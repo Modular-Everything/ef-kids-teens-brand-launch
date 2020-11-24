@@ -2,19 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import sanitizeHtml from 'sanitize-html';
 import useSpace from '../../hooks/useSpace';
 
 //
 
-const SectionIntro = ({ title, copy, small, spacing }) => (
-  <IntroWrap style={useSpace(spacing)}>
-    <Title>{small ? <h3>{title}</h3> : <h2>{title}</h2>}</Title>
+const SectionIntro = ({ title, copy, richtext, small, spacing }) => {
+  let clean;
+  if (richtext) {
+    const dirty = richtext;
+    clean = sanitizeHtml(dirty, {
+      allowedTags: ['a'],
+      allowedAttributes: {
+        a: ['href', 'target'],
+      },
+    });
+  }
 
-    <Paragraph>
-      <p>{copy}</p>
-    </Paragraph>
-  </IntroWrap>
-);
+  return (
+    <IntroWrap style={useSpace(spacing)}>
+      <Title>{small ? <h3>{title}</h3> : <h2>{title}</h2>}</Title>
+
+      {copy && <Paragraph>{copy}</Paragraph>}
+      {richtext && <Paragraph dangerouslySetInnerHTML={{ __html: clean }} />}
+    </IntroWrap>
+  );
+};
 
 export default SectionIntro;
 
@@ -75,6 +88,15 @@ const Paragraph = styled.div`
     padding: 0 3rem 0 1.5rem;
   }
 
+  & a {
+    color: var(--ef-kids-blue);
+    transition: color ease-in-out 250ms;
+
+    &:hover {
+      color: var(--ef-kids-pink);
+    }
+  }
+
   & p {
     margin: 0;
     color: var(--ef-black);
@@ -89,12 +111,15 @@ const Paragraph = styled.div`
 
 SectionIntro.propTypes = {
   title: PropTypes.string.isRequired,
-  copy: PropTypes.string.isRequired,
+  copy: PropTypes.string,
+  richtext: PropTypes.object,
   small: PropTypes.bool,
   spacing: PropTypes.array,
 };
 
 SectionIntro.defaultProps = {
+  copy: null,
+  richtext: null,
   small: false,
   spacing: [0, 0],
 };

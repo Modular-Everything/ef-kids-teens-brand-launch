@@ -23,6 +23,8 @@ const IndexPage = ({ location, data }) => {
 
   const sanity = data.sanityPage;
 
+  console.log(sanity.uniformCopy);
+
   // *
   // * Return
 
@@ -108,7 +110,7 @@ const IndexPage = ({ location, data }) => {
         <Container spacing={[0, 120]}>
           <SectionIntro
             title={sanity.uniformInfo.uniformCopy.title}
-            copy={sanity.uniformInfo.uniformCopy.paragraph}
+            richtext="Like the new image that consist of different colors, EF staff is also made up of professionals coming from different background and potentials, and we want to emphasize this strength in our EF daily lives. And… what can be better than the all-new cool uniform to brighten your day? Check our latest <a href='https://chrish.design' target='_blank'>lookbook</a> so you know how to dress to impress!"
             spacing={[0, 80]}
           />
 
@@ -264,7 +266,12 @@ export const query = graphql`
       uniformInfo {
         uniformCopy {
           title
-          paragraph
+          portableText {
+            children {
+              text
+              marks
+            }
+          }
         }
       }
     }
