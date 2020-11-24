@@ -200,7 +200,7 @@ export const query = graphql`
       schoolSites {
         _key
         asset {
-          fluid(maxWidth: 1920) {
+          fluid(maxWidth: 2880) {
             ...GatsbySanityImageFluid
           }
           title
