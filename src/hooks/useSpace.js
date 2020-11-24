@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export default function useSpace(spacing) {
-  const [topPadding, setTopPadding] = useState(0);
-  const [bottomPadding, setBottomPadding] = useState(0);
+  const [topPadding, setTopPadding] = useState(150);
+  const [bottomPadding, setBottomPadding] = useState(150);
 
   useEffect(() => {
     function handleResize(windowSize) {
