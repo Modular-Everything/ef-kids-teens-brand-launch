@@ -76,7 +76,7 @@ export const query = graphql`
         }
       }
     }
-    allSanityQuizQuestions {
+    allSanityQuizQuestions(sort: { fields: questionNumber }) {
       nodes {
         question
         answers
