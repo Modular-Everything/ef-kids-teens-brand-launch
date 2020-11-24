@@ -79,10 +79,6 @@ const CardContent = styled.div`
   width: 100%;
   padding: 1.5rem;
 
-  /* @media (min-width: 700px) {
-    width: calc(70% - 3rem);
-  } */
-
   @media (min-width: 1234px) {
     width: calc(45% - 3rem);
   }
