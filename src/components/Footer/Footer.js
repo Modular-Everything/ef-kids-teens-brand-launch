@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <footer>
       <FooterWrap>
-        <a href="mailto:email@ef.com" className="iconWrap">
+        <a href="mailto:id.design@ef.id" className="iconWrap">
           <span
             className="icon"
             style={{ backgroundColor: 'var(--ef-kids-pink)' }}
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </a>
 
-        <a href="tel:900101500" className="iconWrap">
+        <a href="tel:(021) 8062 8762" className="iconWrap">
           <span
             className="icon"
             style={{ backgroundColor: 'var(--ef-kids-green)' }}
@@ -70,7 +70,7 @@ const Footer = () => {
           </span>
           <div className="content">
             <span className="heading">Call HQ</span>
-            <span className="copy">900 101 500</span>
+            <span className="copy">(021) 8062 8762</span>
           </div>
         </a>
 
