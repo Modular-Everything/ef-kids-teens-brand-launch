@@ -33,6 +33,7 @@ const IndexPage = ({ location, data }) => {
           videoData={sanity.video.url}
           type="full"
           placeholderVideo={sanity.video.videoPlaceholder}
+          offset
         />
 
         <Container spacing={[132, 52]}>

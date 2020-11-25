@@ -34,6 +34,7 @@ const Video = ({
   placeholderVideo,
   placeholderImg,
   noPlay,
+  offset,
 }) => {
   // *
   // * Playing state
@@ -61,9 +62,9 @@ const Video = ({
           <FullWidthVideo type="placeholder">
             <ReactPlayer
               url={placeholderVideo}
+              style={{ top: offset ? '-110px' : 0, pointerEvents: 'none' }}
               muted
               loop
-              style={{ pointerEvents: 'none' }}
               playing
               controls={false}
               width="100%"
