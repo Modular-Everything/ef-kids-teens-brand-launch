@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import getYouTubeId from 'get-youtube-id';
+import ReactPlayer from 'react-player/youtube';
 
 import PlayIcon from '../../assets/icons/play.svg';
 import useSpace from '../../hooks/useSpace';
@@ -46,15 +46,6 @@ const Video = ({
   const hasCaption = captionTitle || captionCopy;
 
   // *
-  // * Get YouTube IDs
-
-  const placeholderId = getYouTubeId(placeholderVideo);
-  const videoId = getYouTubeId(videoData);
-
-  // *
-  // * Set up player
-
-  // *
   // * Return player
 
   return (
@@ -68,14 +59,49 @@ const Video = ({
         <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
           {!noPlay && <PlayButton onClick={() => setPlaying(true)} />}
           <FullWidthVideo type="placeholder">
-            <div id={`yt_${placeholderId}`} />
+            <ReactPlayer
+              url={placeholderVideo}
+              muted
+              loop
+              style={{ pointerEvents: 'none' }}
+              playing
+              controls={false}
+              width="100%"
+              height="100%"
+              config={{
+                youtube: {
+                  playerVars: {
+                    modestbranding: 1,
+                    controls: 0,
+                    rel: 0,
+                    autohide: 1,
+                  },
+                },
+              }}
+            />
           </FullWidthVideo>
         </div>
       )}
 
       {(playing || placeholderImg) && (
         <FullWidthVideo type={type}>
-          <div id={`yt_${videoId}`} />
+          <ReactPlayer
+            url={videoData}
+            muted
+            playing
+            controls
+            width="100%"
+            height="100%"
+            config={{
+              youtube: {
+                playerVars: {
+                  modestbranding: 1,
+                  rel: 0,
+                  autohide: 1,
+                },
+              },
+            }}
+          />
         </FullWidthVideo>
       )}
 
