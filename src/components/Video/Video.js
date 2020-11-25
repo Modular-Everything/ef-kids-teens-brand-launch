@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Vimeo from '@u-wave/react-vimeo';
+import getYouTubeId from 'get-youtube-id';
 
 import PlayIcon from '../../assets/icons/play.svg';
 import useSpace from '../../hooks/useSpace';
@@ -46,6 +46,15 @@ const Video = ({
   const hasCaption = captionTitle || captionCopy;
 
   // *
+  // * Get YouTube IDs
+
+  const placeholderId = getYouTubeId(placeholderVideo);
+  const videoId = getYouTubeId(videoData);
+
+  // *
+  // * Set up player
+
+  // *
   // * Return player
 
   return (
@@ -59,33 +68,14 @@ const Video = ({
         <div style={{ position: type === 'card' ? 'relative' : 'unset' }}>
           {!noPlay && <PlayButton onClick={() => setPlaying(true)} />}
           <FullWidthVideo type="placeholder">
-            <Vimeo
-              className="videoPlaceholder"
-              video={placeholderVideo}
-              width="100%"
-              height="100%"
-              autopause={false}
-              autoplay
-              controls={false}
-              loop
-              muted
-              background
-            />
+            <div id={`yt_${placeholderId}`} />
           </FullWidthVideo>
         </div>
       )}
 
       {(playing || placeholderImg) && (
         <FullWidthVideo type={type}>
-          <Vimeo
-            video={videoData}
-            width="100%"
-            height="100%"
-            autopause={false}
-            autoplay
-            controls
-            muted={window && window.innerWidth < 500}
-          />
+          <div id={`yt_${videoId}`} />
         </FullWidthVideo>
       )}
 
