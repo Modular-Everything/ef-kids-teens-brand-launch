@@ -34,7 +34,6 @@ const Video = ({
   placeholderVideo,
   placeholderImg,
   noPlay,
-  offset,
 }) => {
   // *
   // * Playing state
@@ -62,7 +61,7 @@ const Video = ({
           <FullWidthVideo type="placeholder">
             <ReactPlayer
               url={placeholderVideo}
-              style={{ top: offset ? '-110px' : 0, pointerEvents: 'none' }}
+              style={{ pointerEvents: 'none' }}
               muted
               loop
               playing
@@ -88,20 +87,11 @@ const Video = ({
         <FullWidthVideo type={type}>
           <ReactPlayer
             url={videoData}
-            muted
             playing
             controls
+            playsinline={false}
             width="100%"
             height="100%"
-            config={{
-              youtube: {
-                playerVars: {
-                  modestbranding: 1,
-                  rel: 0,
-                  autohide: 1,
-                },
-              },
-            }}
           />
         </FullWidthVideo>
       )}
